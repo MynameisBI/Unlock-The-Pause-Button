@@ -1,0 +1,6 @@
+Class = require 'libs.middleclass'
+Vector = require 'libs.brinevector'
+Gamestate = require 'libs.hump.gamestate'
+Timer = require 'libs.hump.timer'
+Bump = require 'libs.bump'
+Suit = require 'libs.suit'
