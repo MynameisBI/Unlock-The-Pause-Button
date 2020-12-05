@@ -10,7 +10,7 @@ local GameManager = Class('GameManager')
 function GameManager:initialize()
 	self.players = {}
 	
-	self.playerSpeed = 320
+	self.playerSpeed = 312
 	
 	self.timer = Timer()
 	
@@ -112,6 +112,7 @@ function GameManager:update(dt)
 	self.ultilitySlot:update(dt)
 	
 	local vect = self:getMoveDir() * self.playerSpeed * dt
+			* (1 + Gamestate.current().levelManager:getStat('speed')/5)
 	for _, player in ipairs(self.players) do
 		player:move(vect)
 	end
@@ -174,6 +175,18 @@ function GameManager:keypressed(key, scancode)
 	end
 	if scancode == 'e' then
 		self.ultilitySlot:switchSkill()
+	end
+end
+
+function GameManager:reCaculateStats()
+	for _, player in ipairs(self.players) do
+		player:reCaculateStats()
+	end
+end
+
+function GameManager:heal(health)
+	for _, player in ipairs(self.players) do
+		player:heal(health)
 	end
 end
 

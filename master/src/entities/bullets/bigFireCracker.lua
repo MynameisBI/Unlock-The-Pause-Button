@@ -8,7 +8,7 @@ function BigFireCracker:initialize(x, y, dir)
   self.speed = 750
   
   self.timer = Timer()
-  self.timer:after(0.4, function()
+  self.timer:after(0.294, function()
     self:destroy()
     self:spawnSmallFireCrackers()
   end)
@@ -34,8 +34,15 @@ function BigFireCracker:spawnSmallFireCrackers()
 end
 
 function BigFireCracker:onCollision(other)
+  local levelManager = Gamestate.current().levelManager
+  
   if other.tag == 'enemy' then
-    other:takeDamage(10)
+    other:takeDamage(
+        10 * (1 + levelManager:getStat('damage')/4)
+    )
+    Gamestate.current().playerManager:heal(
+        10 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+    )
 		self:destroy()
   end
 end

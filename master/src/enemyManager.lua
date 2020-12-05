@@ -64,10 +64,12 @@ function EnemyManager:onEntityRemove(entity)
 		end
 		
 		if #enemies == 0 then
-			Gamestate.current().levelManager:onWaveFinish(self.currentWave)
+			self.timer:after(2, function()
+				Gamestate.current().levelManager:onWaveFinish(self.currentWave)
 			
-			self.timer:after(4, function()
-				self:startNextWave()
+				self.timer:after(2, function()
+					self:startNextWave()
+				end)
 			end)
 		end
 	end

@@ -13,8 +13,15 @@ function DoubleTapBullet:draw()
 end
 
 function DoubleTapBullet:onCollision(other)
+  local levelManager = Gamestate.current().levelManager
+  
   if other.tag == 'enemy' then
-    other:takeDamage(5)
+    other:takeDamage(
+        5 * (1 + levelManager:getStat('damage')/4)
+    )
+    Gamestate.current().playerManager:heal(
+        5 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+    )
 		self:destroy()
   end
 end

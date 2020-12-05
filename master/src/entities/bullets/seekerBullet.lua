@@ -22,4 +22,18 @@ function SeekerBullet:update(dt)
 	end
 end
 
+function SeekerBullet:onCollision(other)
+	local levelManager = Gamestate.current().levelManager
+	
+  if other.tag == 'enemy' then
+    other:takeDamage(
+        6 * (1 + levelManager:getStat('damage')/4)
+    )
+		Gamestate.current().playerManager:heal(
+        6 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+    )
+		self:destroy()
+  end
+end
+
 return SeekerBullet

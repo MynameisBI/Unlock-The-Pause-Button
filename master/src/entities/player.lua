@@ -3,16 +3,16 @@ local Entity = require 'src.entities.entity'
 local Player = Class('Player', Entity)
 
 local screenWidth, screenHeight = love.graphics.getDimensions()
+local baseHealth = 100
 
 function Player:initialize(x, y)
   Entity.initialize(self, x or screenWidth/2, y or screenHeight/2, 40, 40)
   self.tag = 'player'
   
-  self.speed = 200
-  
   self.timer = Timer.new()
   
-  self.health = 10
+  self.maxHealth = baseHealth
+  self.health = baseHealth
   self.isInvicible = false
   
   self.dashSpeed = 400
@@ -30,13 +30,17 @@ function Player:update(dt)
   self.isGhosting = false
   
   if self.isDashing then
-    self:translate(self.dashDir * self.dashSpeed * dt)
+    self:translate(self.dashDir * self.dashSpeed * dt
+        * (1 + Gamestate.current().levelManager:getStat('speed')/5))
   end
 end
 
 function Player:draw()
   love.graphics.setColor(1, 0, 1)
   love.graphics.circle('fill', self.x, self.y, 20)
+  
+  love.graphics.setColor(1, 1, 1)
+  love.graphics.print(tostring(self.health), self.x - 12, self.y - 35)
 end
 
 function Player:move(vect)
@@ -68,6 +72,21 @@ function Player:takeDamage(damage)
     end
     
   end
+end
+
+function Player:heal(health)
+  self.health = self.health + health
+  if self.health > self.maxHealth then
+    self.health = self.maxHealth
+  end
+end
+
+function Player:reCaculateStats()
+  local levelManager = Gamestate.current().levelManager
+  local newMaxHealth = baseHealth + levelManager:getStat('health') * 30
+  
+  self.health = self.health + newMaxHealth - self.maxHealth
+  self.maxHealth = newMaxHealth
 end
 
 return Player

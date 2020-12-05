@@ -5,7 +5,7 @@ local LevelUp = {}
 
 local screenWidth, screenHeight = love.graphics.getDimensions()
 local upgrades = {
-
+	'damage', 'health', 'speed', 'cooldown', 'lifesteal'
 }
 local obstacles = {
 	'invert controls', 'pedestrians'
@@ -14,8 +14,9 @@ local obstacles = {
 function LevelUp:enter(gameState, wave)
 	self.gameState = gameState
 	
-	
-	self.upgradeGroup = OptionGroup(186, 50, 'damage', 'damage','damage')
+	self.upgradeGroup = OptionGroup(186, 50,
+			upgrades[math.random(1, 3)], upgrades[math.random(1, 3)], upgrades[math.random(1, 3)]
+	)
 	
 	self.obstacleGroup = OptionGroup(186, 370, 'damage', 'damage','damage')
 	

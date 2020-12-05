@@ -20,7 +20,7 @@ function OptionGroup:updateOption(x, y, w, h, index)
 	if self.selectedOptionIndex == index then
 		text = 'selected'
 	else
-		text = 'hola'
+		text = self.options[index]
 	end
 	
 	if self.suit:Button(text, {id = index}, x, y, w, h).hit then

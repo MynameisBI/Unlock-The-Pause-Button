@@ -19,7 +19,8 @@ function Skill:activate()
 		end
 		
 		self.isReady = false
-		self.timer:after(self.cooldown, function() self.isReady = true end)
+		self.timer:after(self.cooldown * 6 / (Gamestate.current().levelManager:getStat('cooldown') + 6),
+				function() self.isReady = true end)
 		
 		self:execute()
 		
@@ -31,7 +32,7 @@ end
 
 function Skill:execute()
 	local entities = Gamestate.current().entities
-	local firtPlayer = Gamestate.current().gameManager.players[1]
+	local firtPlayer = Gamestate.current().playerManager.players[1]
 	local mx, my = love.mouse.getPosition()
 	local dir = Vector(mx - firtPlayer.x, my - firtPlayer.y).normalized
 	

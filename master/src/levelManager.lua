@@ -8,11 +8,7 @@ function LevelManager:initialize()
 		health = 0,
 		speed = 0,
 		cooldown = 0,
-		lifesteal = 0
-	}
-	
-	self.talents = {
-	
+		lifesteal = 1
 	}
 	
 	self.obstacles = {
@@ -27,21 +23,25 @@ end
 
 function LevelManager:handleOptions(upgrade, obstacle)
 	if upgrade == 'damage' then
-		self.damage = self.damage + 1
+		self.statsAddition.damage = self.statsAddition.damage + 1
 		
 	elseif upgrade == 'health' then
-		self.health = self.health + 1
+		self.statsAddition.health = self.statsAddition.health + 1
 		
 	elseif upgrade == 'speed' then
-		self.speed = self.speed + 1
+		self.statsAddition.speed = self.statsAddition.speed + 1
 		
-	elseif upgrade == 'health' then
-		self.cooldown = self.cooldown + 1
+	elseif upgrade == 'cooldown' then
+		self.statsAddition.cooldown = self.statsAddition.cooldown + 1
 		
 	elseif upgrade == 'lifesteal' then
-		self.lifesteal = self.lifesteal + 1
+		self.statsAddition.lifesteal = self.statsAddition.lifesteal + 1
 		
 	end
+end
+
+function LevelManager:getStat(stat)
+	return self.statsAddition[stat]
 end
 
 return LevelManager

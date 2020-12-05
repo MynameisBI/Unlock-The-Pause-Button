@@ -13,8 +13,15 @@ function TheBlastBullet:draw()
 end
 
 function TheBlastBullet:onCollision(other)
+  local levelManager = Gamestate.current().levelManager
+  
   if other.tag == 'enemy' then
-    other:takeDamage(3)
+    other:takeDamage(
+        3 * (1 + Gamestate.current().levelManager:getStat('damage')/4)
+    )
+    Gamestate.current().playerManager:heal(
+        3 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+    )
 		self:destroy()
   end
 end

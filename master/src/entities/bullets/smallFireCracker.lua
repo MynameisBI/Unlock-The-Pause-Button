@@ -13,8 +13,15 @@ function SmallFireCracker:draw()
 end
 
 function SmallFireCracker:onCollision(other)
+  local levelManager = Gamestate.current().levelManager
+  
   if other.tag == 'enemy' then
-    other:takeDamage(2)
+    other:takeDamage(
+        2 * (1 + levelManager:getStat('damage')/4)
+    )
+    Gamestate.current().playerManager:heal(
+        5 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+    )
 		self:destroy()
   end
 end
