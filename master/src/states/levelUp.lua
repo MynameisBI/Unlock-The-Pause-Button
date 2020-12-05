@@ -5,18 +5,19 @@ local LevelUp = {}
 
 local screenWidth, screenHeight = love.graphics.getDimensions()
 local upgrades = {
-	'damage', 'health', 'speed', 'cooldown', 'lifesteal'
+	'damage', 'health', 'speed', 'cooldown', 'lifesteal',
+	'pause'
 }
 local obstacles = {
 	'invert controls', 'pedestrians'
 }
 
-function LevelUp:enter(gameState, wave)
+function LevelUp:enter(gameState)
 	self.gameState = gameState
+	self.levelManager = gameState.levelManager
 	
-	self.upgradeGroup = OptionGroup(186, 50,
-			upgrades[math.random(1, 3)], upgrades[math.random(1, 3)], upgrades[math.random(1, 3)]
-	)
+	local o1, o2, o3 = self:chooseUpgradeOptions()
+	self.upgradeGroup = OptionGroup(186, 50, o1, o2, o3)
 	
 	self.obstacleGroup = OptionGroup(186, 370, 'damage', 'damage','damage')
 	
@@ -24,12 +25,35 @@ function LevelUp:enter(gameState, wave)
 			self.upgradeGroup, self.obstacleGroup)
 end
 
-function LevelUp:chooseUpgradeOptions()
 
+function LevelUp:chooseUpgradeOptions()
+	local upgradeOptionIndexes = {}
+	for i = 1, 3 do
+		local optionIndex
+		repeat
+			optionIndex = math.random(1, #upgrades)
+		until (
+			self:isValueInTable(optionIndex, upgradeOptionIndexes) == false and
+			self.levelManager:getStat(upgrades[optionIndex]) ~= true
+		)
+		upgradeOptionIndexes[i] = optionIndex
+	end
+	
+	return upgrades[upgradeOptionIndexes[1]], upgrades[upgradeOptionIndexes[2]],
+			upgrades[upgradeOptionIndexes[3]]
 end
 
 function LevelUp:chooseObstacleOptions()
 
+end
+
+function LevelUp:isValueInTable(v, t)
+	for i = 1, #t do
+		if v == t[i] then
+			return true
+		end
+	end
+	return false
 end
 
 function LevelUp:update(dt)

@@ -4,6 +4,7 @@ local LevelManager = require 'src.levelManager'
 local PlayerManager = require 'src.playerManager'
 
 local LevelUp = require 'src.states.levelUp'
+local Pause = require 'src.states.pause'
 
 local Game = {}
 
@@ -71,6 +72,11 @@ end
 
 function Game:keypressed(key, scancode)
   self.playerManager:keypressed(key, scancode)
+  
+  if self.levelManager:getStat('pause') == true
+      and (scancode == 'escape' or scancode == 'p') then
+    self:queueState(Pause)
+  end
 end
 
 function Game:queueState(state, ...)
@@ -83,6 +89,5 @@ function Game:resume(from, ...)
     self.playerManager:reCaculateStats()
   end
 end
-
 
 return Game

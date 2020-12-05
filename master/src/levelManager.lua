@@ -8,7 +8,9 @@ function LevelManager:initialize()
 		health = 0,
 		speed = 0,
 		cooldown = 0,
-		lifesteal = 1
+		lifesteal = 1,
+		
+		pause = false,
 	}
 	
 	self.obstacles = {
@@ -17,7 +19,6 @@ function LevelManager:initialize()
 end
 
 function LevelManager:onWaveFinish(currentWave)
-	--Gamestate.push(LevelUp)
 	Gamestate.current():queueState(LevelUp)
 end
 
@@ -37,11 +38,19 @@ function LevelManager:handleOptions(upgrade, obstacle)
 	elseif upgrade == 'lifesteal' then
 		self.statsAddition.lifesteal = self.statsAddition.lifesteal + 1
 		
+		
+	elseif upgrade == 'pause' then
+		self.statsAddition.pause = true
+		
 	end
 end
 
 function LevelManager:getStat(stat)
 	return self.statsAddition[stat]
+end
+
+function LevelManager:getObstacle(obstacle)
+	return self.obstacles[obstacle]
 end
 
 return LevelManager
