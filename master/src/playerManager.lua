@@ -1,3 +1,5 @@
+local Player = require 'src.entities.player'
+
 local SkillSlot = require 'src.skills.skillSlot'
 local Skill = require 'src.skills.skill'
 local DoubleTapBullet = require 'src.entities.bullets.doubleTapBullet'
@@ -124,6 +126,11 @@ function GameManager:update(dt)
 	if love.keyboard.isScancodeDown('space') then
 		self.ultilitySlot:useSkill()
 	end
+	
+	if self.players[1] ~= nil then
+		Gamestate.current().camera:lockPosition(self.players[1].x, self.players[1].y,
+				Camera.smooth.damped(2))
+	end
 end
 
 function GameManager:draw()
@@ -188,6 +195,10 @@ function GameManager:heal(health)
 	for _, player in ipairs(self.players) do
 		player:heal(health)
 	end
+end
+
+function GameManager:addNewPlayer()
+
 end
 
 return GameManager

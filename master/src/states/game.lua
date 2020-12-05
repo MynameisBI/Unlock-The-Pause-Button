@@ -19,9 +19,10 @@ function Game:enter()
   self.entities = {}
   
   self:addEntity(Player())
-  self:addEntity(Player(300, 200))
   
   self.enemyManager = EnemyManager()
+  
+  self.camera = Camera()
 end
 
 function Game:update(dt)
@@ -43,11 +44,15 @@ function Game:update(dt)
 end
 
 function Game:draw()
+  self.camera:attach()
+  
   for i, entity in ipairs(self.entities) do
     entity:draw()
   end
   
   self.playerManager:draw()
+  
+  self.camera:detach()
   
   love.graphics.setColor(1, 1, 1)
   love.graphics.print('#: '..tostring(#self.entities), 0, 500)

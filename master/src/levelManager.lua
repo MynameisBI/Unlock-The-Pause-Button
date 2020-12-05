@@ -25,22 +25,26 @@ end
 function LevelManager:handleOptions(upgrade, obstacle)
 	if upgrade == 'damage' then
 		self.statsAddition.damage = self.statsAddition.damage + 1
-		
+	
 	elseif upgrade == 'health' then
 		self.statsAddition.health = self.statsAddition.health + 1
-		
+	
 	elseif upgrade == 'speed' then
 		self.statsAddition.speed = self.statsAddition.speed + 1
-		
+	
 	elseif upgrade == 'cooldown' then
 		self.statsAddition.cooldown = self.statsAddition.cooldown + 1
-		
+	
 	elseif upgrade == 'lifesteal' then
 		self.statsAddition.lifesteal = self.statsAddition.lifesteal + 1
+	
 		
-		
+	elseif upgrade == 'clone' then
+	
+	
 	elseif upgrade == 'pause' then
 		self.statsAddition.pause = true
+		
 		
 	end
 end

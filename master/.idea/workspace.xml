@@ -45,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -81,30 +81,38 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="92" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1607171800283" />
-    <state width="734" height="216" key="GridCell.Tab.0.bottom" timestamp="1607173665976">
+    <state x="497" y="115" key="FileChooserDialogImpl" timestamp="1607174195600">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="734" height="216" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1607173665976" />
+    <state x="497" y="115" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1607174195600" />
+    <state width="734" height="216" key="GridCell.Tab.0.bottom" timestamp="1607173736833">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="734" height="216" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1607173736833" />
     <state width="1259" height="267" key="GridCell.Tab.0.bottom/0.0.1280.994@0.0.1280.994" timestamp="1607049271701" />
-    <state width="734" height="216" key="GridCell.Tab.0.center" timestamp="1607173665976">
+    <state width="734" height="216" key="GridCell.Tab.0.center" timestamp="1607173736833">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="734" height="216" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1607173665976" />
+    <state width="734" height="216" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1607173736833" />
     <state width="1259" height="267" key="GridCell.Tab.0.center/0.0.1280.994@0.0.1280.994" timestamp="1607049271701" />
-    <state width="734" height="216" key="GridCell.Tab.0.left" timestamp="1607173665976">
+    <state width="734" height="216" key="GridCell.Tab.0.left" timestamp="1607173736833">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="734" height="216" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1607173665976" />
+    <state width="734" height="216" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1607173736833" />
     <state width="1259" height="267" key="GridCell.Tab.0.left/0.0.1280.994@0.0.1280.994" timestamp="1607049271701" />
-    <state width="734" height="216" key="GridCell.Tab.0.right" timestamp="1607173665976">
+    <state width="734" height="216" key="GridCell.Tab.0.right" timestamp="1607173736833">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="734" height="216" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1607173665976" />
+    <state width="734" height="216" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1607173736833" />
     <state width="1259" height="267" key="GridCell.Tab.0.right/0.0.1280.994@0.0.1280.994" timestamp="1607049271701" />
-    <state x="141" y="0" key="SettingsEditor" timestamp="1607169649460">
+    <state x="141" y="0" key="SettingsEditor" timestamp="1607174215777">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="141" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1607169649460" />
+    <state x="141" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1607174215777" />
     <state x="141" y="142" key="SettingsEditor/0.0.1280.994@0.0.1280.994" timestamp="1607045821686" />
+    <state x="341" y="156" width="619" height="501" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1607174212159">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="341" y="156" width="619" height="501" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1280.689@0.0.1280.689" timestamp="1607174212159" />
   </component>
 </project>
