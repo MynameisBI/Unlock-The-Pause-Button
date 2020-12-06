@@ -10,6 +10,7 @@ local upgrades = {
 	'pause'
 }
 local obstacles = {
+	'game speed',
 	'invert controls', 'pedestrians'
 }
 
@@ -18,9 +19,9 @@ function LevelUp:enter(gameState)
 	self.levelManager = gameState.levelManager
 	
 	local o1, o2, o3 = self:chooseUpgradeOptions()
-	self.upgradeGroup = OptionGroup(186, 50, 'clone', o2, o3)
+	self.upgradeGroup = OptionGroup(186, 50, o1, o2, o3)
 	
-	self.obstacleGroup = OptionGroup(186, 370, 'damage', 'damage','damage')
+	self.obstacleGroup = OptionGroup(186, 370, 'game speed', '404','not found')
 	
 	self.confirmButton = ConfirmButton:new(screenWidth/2 - 60, screenHeight/2 - 35,
 			self.upgradeGroup, self.obstacleGroup)

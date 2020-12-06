@@ -14,7 +14,7 @@ function LevelManager:initialize()
 	}
 	
 	self.obstacles = {
-	
+		['game speed'] = 0
 	}
 end
 
@@ -23,6 +23,11 @@ function LevelManager:onWaveFinish(currentWave)
 end
 
 function LevelManager:handleOptions(upgrade, obstacle)
+	self:handleUpgrade(upgrade)
+	self:handleObstacle(obstacle)
+end
+
+function LevelManager:handleUpgrade(upgrade)
 	if upgrade == 'damage' then
 		self.statsAddition.damage = self.statsAddition.damage + 1
 	
@@ -37,7 +42,7 @@ function LevelManager:handleOptions(upgrade, obstacle)
 	
 	elseif upgrade == 'lifesteal' then
 		self.statsAddition.lifesteal = self.statsAddition.lifesteal + 1
-	
+		
 		
 	elseif upgrade == 'clone' then
 		Gamestate.current().playerManager:addNewPlayer()
@@ -47,6 +52,12 @@ function LevelManager:handleOptions(upgrade, obstacle)
 		self.statsAddition.pause = true
 		
 		
+	end
+end
+
+function LevelManager:handleObstacle(obstacle)
+	if obstacle == 'game speed' then
+		self.obstacles['game speed'] = self.obstacles['game speed'] + 1
 	end
 end
 

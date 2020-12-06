@@ -26,6 +26,8 @@ function Game:enter()
 end
 
 function Game:update(dt)
+  dt = dt * (1 + self.levelManager:getObstacle('game speed') / 5)
+  
   self.playerManager:update(dt)
   self.enemyManager:update(dt)
   
