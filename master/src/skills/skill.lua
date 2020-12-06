@@ -33,7 +33,7 @@ end
 function Skill:execute()
 	local entities = Gamestate.current().entities
 	local firtPlayer = Gamestate.current().playerManager.players[1]
-	local mx, my = love.mouse.getPosition()
+	local mx, my = Gamestate.current().camera:mousePosition()
 	local dir = Vector(mx - firtPlayer.x, my - firtPlayer.y).normalized
 	
 	for i, entity in ipairs(entities) do

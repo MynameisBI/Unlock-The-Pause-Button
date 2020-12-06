@@ -40,7 +40,8 @@ function LevelManager:handleOptions(upgrade, obstacle)
 	
 		
 	elseif upgrade == 'clone' then
-	
+		Gamestate.current().playerManager:addNewPlayer()
+		
 	
 	elseif upgrade == 'pause' then
 		self.statsAddition.pause = true
