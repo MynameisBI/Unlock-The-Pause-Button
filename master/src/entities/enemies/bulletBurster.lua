@@ -29,8 +29,9 @@ function BulletBurster:initialize(x, y)
 end
 
 function BulletBurster:draw()
-	love.graphics.setColor(0.8, 0.8, 0.2)
-	love.graphics.circle('fill', self.x, self.y, 9)
+	love.graphics.setColor(1, 1, 1)
+	love.graphics.draw(Sprites.enemies[2], self.x, self.y, 0, 1, 1,
+		Sprites.enemies[2]:getWidth()/2, Sprites.enemies[2]:getHeight()/2)
 end
 
 function BulletBurster:findNewStep()

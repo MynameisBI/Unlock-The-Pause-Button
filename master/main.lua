@@ -4,6 +4,7 @@
 
 
 require 'globals'
+require 'assets'
 
 local Game = require 'src.states.game'
 

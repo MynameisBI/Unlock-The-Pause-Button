@@ -52,6 +52,12 @@ function EnemyManager:startNextWave()
 		local spawner = Spawner(pos.x, pos.y, 'TouchAndExplode')
 		table.insert(self.spawners, spawner)
 	end
+	
+	for i = 1, self.currentWave/3 do
+		local pos = spawnPointsPositions[math.random(1, #spawnPointsPositions)]
+		local spawner = Spawner(pos.x, pos.y, 'BulletBurster')
+		table.insert(self.spawners, spawner)
+	end
 end
 
 function EnemyManager:onEntityRemove(entity)
