@@ -46,6 +46,8 @@ function Game:update(dt)
 end
 
 function Game:draw()
+  love.graphics.setBackgroundColor(50/255, 51/255, 83/255)
+  
   self.camera:attach()
   
   for i, entity in ipairs(self.entities) do
@@ -58,6 +60,10 @@ function Game:draw()
   
   love.graphics.setColor(1, 1, 1)
   love.graphics.print('#: '..tostring(#self.entities), 0, 500)
+  
+  local mx, my = love.mouse.getPosition()
+  love.graphics.draw(Sprites.cursor, mx, my, 0, 1, 1,
+      Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
 end
 
 function Game:addEntity(entity)

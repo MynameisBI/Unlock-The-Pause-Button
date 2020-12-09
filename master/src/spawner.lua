@@ -1,5 +1,6 @@
 local TouchAndExplode = require 'src.entities.enemies.touchAndExplode'
 local BulletBurster = require 'src.entities.enemies.bulletBurster'
+local BigBoy = require 'src.entities.enemies.bigBoy'
 
 local Spawner = Class('Spawner')
 
@@ -15,6 +16,10 @@ function Spawner:initialize(x, y, enemyType)
 		enemyClass = BulletBurster
 		interval = 0.4
 		quantity = 3
+	elseif enemyType == 'BigBoy' then
+		enemyClass = BigBoy
+		interval = 1
+		quantity = 2
 	else
 	
 	end

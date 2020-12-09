@@ -11,7 +11,7 @@ local maxSpreadAngle2 = -math.pi/18
 local bulletSpread = math.pi/6
 
 function BulletBurster:initialize(x, y)
-	Enemy.initialize(self, x, y, 18, 18, 2.5, 80, math.pi/4)
+	Enemy.initialize(self, x, y, 20, 20, 2.5, 80, math.pi/4)
 	
 	self.timer:every(1.6 + math.random(30, 60) / 10, function()
 		local target = self:findTarget()

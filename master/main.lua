@@ -11,6 +11,9 @@ local Game = require 'src.states.game'
 function love.load()
   math.randomseed(os.time())
   
+  love.mouse.setVisible(false)
+  love.mouse.setGrabbed(true)
+  
   Gamestate.registerEvents()
   Gamestate.switch(Game)
 end

@@ -3,7 +3,7 @@ local Enemy =  require 'src.entities.enemies.enemy'
 local TouchAndExplode = Class('TouchAndExplode', Enemy)
 
 function TouchAndExplode:initialize(x, y)
-	Enemy.initialize(self, x, y, 16, 16, 4.6, 60, math.pi/4)
+	Enemy.initialize(self, x, y, 16, 16, 4.6, 60, math.pi/3)
 	
 	self.timer = Timer()
 	self.isAttackReady = true
