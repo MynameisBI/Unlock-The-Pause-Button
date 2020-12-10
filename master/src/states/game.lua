@@ -2,6 +2,7 @@ local Player = require 'src.entities.player'
 local EnemyManager = require 'src.enemyManager'
 local LevelManager = require 'src.levelManager'
 local PlayerManager = require 'src.playerManager'
+local CursorManager = require 'src.cursorManager'
 
 local LevelUp = require 'src.states.levelUp'
 local Pause = require 'src.states.pause'
@@ -17,11 +18,10 @@ function Game:enter()
   self.levelManager = LevelManager()
   
   self.entities = {}
-  
   self:addEntity(Player())
   
   self.enemyManager = EnemyManager()
-  
+  self.cursorManager = CursorManager()
   self.camera = Camera()
 end
 
@@ -30,6 +30,7 @@ function Game:update(dt)
   
   self.playerManager:update(dt)
   self.enemyManager:update(dt)
+  self.cursorManager:update(dt)
   
   for i, entity in ipairs(self.entities) do
     if entity.isDestroyed then
@@ -58,12 +59,10 @@ function Game:draw()
   
   self.camera:detach()
   
+  self.cursorManager:draw()
+  
   love.graphics.setColor(1, 1, 1)
   love.graphics.print('#: '..tostring(#self.entities), 0, 500)
-  
-  local mx, my = love.mouse.getPosition()
-  love.graphics.draw(Sprites.cursor, mx, my, 0, 1, 1,
-      Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
 end
 
 function Game:addEntity(entity)

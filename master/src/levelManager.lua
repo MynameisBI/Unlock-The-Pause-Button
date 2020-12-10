@@ -58,6 +58,10 @@ end
 function LevelManager:handleObstacle(obstacle)
 	if obstacle == 'game speed' then
 		self.obstacles['game speed'] = self.obstacles['game speed'] + 1
+		
+	elseif obstacle == 'cursor' then
+		Gamestate.current().cursorManager:addCursor(2)
+		
 	end
 end
 
