@@ -6,16 +6,18 @@
 require 'globals'
 require 'assets'
 
-local Game = require 'src.states.game'
+Game = require 'src.states.game'
+LevelUp = require 'src.states.levelUp'
+Pause = require 'src.states.pause'
+Menu = require 'src.states.menu'
 
 function love.load()
   math.randomseed(os.time())
   
   love.mouse.setVisible(false)
-  love.mouse.setGrabbed(true)
   
   Gamestate.registerEvents()
-  Gamestate.switch(Game)
+  Gamestate.switch(Menu)
 end
 
 function love.update(dt)

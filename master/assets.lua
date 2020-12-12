@@ -10,3 +10,9 @@ Sprites = {
 		lg.newImage('assets/enemies/03.png')
 	}
 }
+
+Fonts = {
+	menuFont = lg.newFont('assets/fonts/04B_03B_.TTF', 40),
+	
+	infoScreen = lg.newFont('assets/fonts/04B_03B_.TTF', 24),
+}

@@ -4,10 +4,9 @@ local LevelManager = require 'src.levelManager'
 local PlayerManager = require 'src.playerManager'
 local CursorManager = require 'src.cursorManager'
 
-local LevelUp = require 'src.states.levelUp'
-local Pause = require 'src.states.pause'
-
 local Game = {}
+
+local sw, sh = love.graphics.getDimensions()
 
 function Game:enter()
   self.queuedState = nil
@@ -23,6 +22,8 @@ function Game:enter()
   self.enemyManager = EnemyManager()
   self.cursorManager = CursorManager()
   self.camera = Camera()
+  
+  self.isInInfoScreen = false
 end
 
 function Game:update(dt)
@@ -61,8 +62,19 @@ function Game:draw()
   
   self.cursorManager:draw()
   
-  love.graphics.setColor(1, 1, 1)
-  love.graphics.print('#: '..tostring(#self.entities), 0, 500)
+  if self.isInInfoScreen then
+    love.graphics.setColor(0, 0, 0, 0.4)
+    love.graphics.rectangle('fill', 0, 0, sw, sh)
+    
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.setFont(Fonts.infoScreen)
+    love.graphics.print('PRESS ESCAPE TO RESUME', sw/2, 330, 0, 1, 1,
+        Fonts.infoScreen:getWidth('PRESS ESCAPE TO RESUME')/2)
+    love.graphics.print('PRESS R TO RESTART', sw/2, 360, 0, 1, 1,
+        Fonts.infoScreen:getWidth('PRESS R TO RESTART')/2)
+    love.graphics.print('PRESS M TO RETURN TO MENU', sw/2, 390, 0, 1, 1,
+        Fonts.infoScreen:getWidth('PRESS M TO RETURN TO MENU')/2)
+  end
 end
 
 function Game:addEntity(entity)
@@ -85,9 +97,20 @@ end
 function Game:keypressed(key, scancode)
   self.playerManager:keypressed(key, scancode)
   
-  if self.levelManager:getStat('pause') == true
-      and (scancode == 'escape' or scancode == 'p') then
-    self:queueState(Pause)
+  if (scancode == 'escape' or scancode == 'p') then
+    if self.levelManager:getStat('pause') == true then
+      self:queueState(Pause)
+    else
+      self:toggleInfoScreen()
+    end
+  end
+  
+  if self.isInInfoScreen then
+    if scancode == 'r' then
+      Gamestate.switch(self)
+    elseif scancode == 'm' then
+      Gamestate.switch(Menu)
+    end
   end
 end
 
@@ -99,6 +122,14 @@ function Game:resume(from, ...)
   if from == LevelUp then
     self.levelManager:handleOptions(...)
     self.playerManager:reCaculateStats()
+  end
+end
+
+function Game:toggleInfoScreen()
+  if self.isInInfoScreen == true then
+    self.isInInfoScreen = false
+  else
+    self.isInInfoScreen = true
   end
 end
 
