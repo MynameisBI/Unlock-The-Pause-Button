@@ -17,10 +17,12 @@ function CursorManager:draw()
 		self.cursors[i]:draw()
 	end
 	
-	love.graphics.setColor(1, 1, 1)
-	local mx, my = love.mouse.getPosition()
-  love.graphics.draw(Sprites.cursor, mx, my, 0, 1, 1,
-      Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
+	if Gamestate.current() == Game then
+		love.graphics.setColor(1, 1, 1)
+		local mx, my = love.mouse.getPosition()
+		love.graphics.draw(Sprites.cursor, mx, my, 0, 1, 1,
+				Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
+	end
 end
 
 function CursorManager:addCursor(num)

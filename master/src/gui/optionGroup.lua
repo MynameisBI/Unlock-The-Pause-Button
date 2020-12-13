@@ -16,15 +16,39 @@ function OptionGroup:update(dt)
 end
 
 function OptionGroup:updateOption(x, y, w, h, index)
-	local text
-	if self.selectedOptionIndex == index then
-		text = 'selected'
-	else
-		text = self.options[index]
-	end
+	local upgradeName = self.options[index]
+	print(upgradeName)
+	local images = Sprites.upgrades[upgradeName]
+	-- index from self.options -> upgrade name -> appropriate upgrade images
 	
-	if self.suit:Button(text, {id = index}, x, y, w, h).hit then
-		self.selectedOptionIndex = index
+	-- if images is nil then that means we debugging
+	love.graphics.setColor(1, 1, 1)
+	if images == nil then
+		if self.selectedOptionIndex == index then -- if selected
+			if self.suit:Button(upgradeName, {id = index},
+					x, y, w, h).hit then
+				self.selectedOptionIndex = index
+			end
+		else
+			if self.suit:Button(upgradeName, {id = index},
+					x, y, w, h).hit then
+				self.selectedOptionIndex = index
+			end
+		end
+		
+	else
+		if self.selectedOptionIndex == index then -- if selected
+			if self.suit:ImageButton(images.selected, {id = index},
+					x, y, w, h).hit then
+				self.selectedOptionIndex = index
+			end
+			
+		else
+			if self.suit:ImageButton(images.normal, {id = index, active = images.selected},
+					x, y, w, h).hit then
+				self.selectedOptionIndex = index
+			end
+		end
 	end
 end
 

@@ -6,8 +6,8 @@ local LevelUp = {}
 local screenWidth, screenHeight = love.graphics.getDimensions()
 local upgrades = {
 	'damage', 'health', 'speed', 'cooldown', 'lifesteal',
-	'clone',
-	'pause'
+	--'clone',
+	--'pause'
 }
 local obstacles = {
 	'game speed', 'cursor',
@@ -67,12 +67,17 @@ end
 function LevelUp:draw()
 	self.gameState:draw()
 	
-	love.graphics.setColor(0, 0, 0, 0.6)
+	love.graphics.setColor(0, 0, 0, 0.4)
 	love.graphics.rectangle('fill', 0, 0, screenWidth, screenHeight)
 	
 	self.upgradeGroup:draw()
 	self.obstacleGroup:draw()
 	self.confirmButton:draw()
+	
+	local mx, my = love.mouse.getPosition()
+	love.graphics.setColor(1, 1, 1)
+	love.graphics.draw(Sprites.cursor, mx, my, 0, 1, 1,
+			Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
 end
 
 return LevelUp
