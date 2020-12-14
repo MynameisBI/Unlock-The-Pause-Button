@@ -3,7 +3,7 @@ local Bullet = require 'src.entities.bullets.bullet'
 local SeekerBullet = Class('SeekerBullet', Bullet)
 
 function SeekerBullet:initialize(x, y, dir)
-	Bullet.initialize(self, x, y, 12, 12, dir)
+	Bullet.initialize(self, x, y, 24, 24, dir)
 	
 	self.speed = 900
 	
@@ -34,6 +34,13 @@ function SeekerBullet:onCollision(other)
     )
 		self:destroy()
   end
+end
+
+function SeekerBullet:draw()
+	local sprite = Sprites.player.bullets.seekerBullet
+  love.graphics.setColor(1, 1, 1)
+  love.graphics.draw(sprite, self.x, self.y, self.dir.angle, 1, 1,
+      sprite:getWidth()/2, sprite:getHeight()/2)
 end
 
 return SeekerBullet

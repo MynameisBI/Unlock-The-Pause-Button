@@ -30,6 +30,16 @@ Sprites = {
 			normal = lg.newImage('assets/upgrades/spe_normal.png'),
 			selected = lg.newImage('assets/upgrades/spe_selected.png'),
 		}
+	},
+	player = {
+		healthBar = lg.newImage('assets/player/healthBar.png'),
+		bullets = {
+			doubleTapBullet = lg.newImage('assets/player/bullets/doubleTapBullet.png'),
+			seekerBullet = lg.newImage('assets/player/bullets/seekerBullet.png'),
+			theBlastBullet = lg.newImage('assets/player/bullets/theBlastBullet.png'),
+			bigFireCraker = lg.newImage('assets/player/bullets/bigFireCracker.png'),
+			smallFireCraker = lg.newImage('assets/player/bullets/smallFireCracker.png'),
+		}
 	}
 }
 

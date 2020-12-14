@@ -4,7 +4,7 @@ local SmallFireCracker = require 'src.entities.bullets.smallFireCracker'
 local BigFireCracker = Class('BigFireCracker', Bullet)
 
 function BigFireCracker:initialize(x, y, dir)
-  Bullet.initialize(self, x, y, 24, 24, dir)
+  Bullet.initialize(self, x, y, 40, 40, dir)
   self.speed = 750
   
   self.timer = Timer()
@@ -21,8 +21,10 @@ function BigFireCracker:update(dt)
 end
 
 function BigFireCracker:draw()
-  love.graphics.setColor(0.7, 0.7, 0.8)
-  love.graphics.circle('fill', self.x, self.y, 12)
+  local sprite = Sprites.player.bullets.bigFireCraker
+  love.graphics.setColor(1, 1, 1)
+  love.graphics.draw(sprite, self.x, self.y, self.dir.angle, 1, 1,
+      sprite:getWidth()/2, sprite:getHeight()/2)
 end
 
 function BigFireCracker:spawnSmallFireCrackers()

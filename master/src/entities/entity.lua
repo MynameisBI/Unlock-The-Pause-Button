@@ -14,6 +14,9 @@ end
 function Entity:draw()
 end
 
+function Entity:guiDraw()
+end
+
 function Entity:translate(dir)
 	self.x = self.x + dir.x
 	self.y = self.y + dir.y

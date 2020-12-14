@@ -38,9 +38,20 @@ end
 function Player:draw()
   love.graphics.setColor(1, 0, 1)
   love.graphics.circle('fill', self.x, self.y, 20)
-  
+end
+
+function Player:guiDraw()
   love.graphics.setColor(1, 1, 1)
-  love.graphics.print(tostring(self.health), self.x - 12, self.y - 35)
+  love.graphics.draw(Sprites.player.healthBar, self.x, self.y - 24, 0, 1, 1,
+      Sprites.player.healthBar:getWidth()/2, Sprites.player.healthBar:getHeight()/2)
+  
+  love.graphics.setColor(232/255, 59/255, 59/255)
+  love.graphics.rectangle('fill',
+      self.x - Sprites.player.healthBar:getWidth()/2 + 2,
+      self.y - Sprites.player.healthBar:getHeight()/2 - 24 + 2,
+      (Sprites.player.healthBar:getWidth() - 4) * (self.health / self.maxHealth),
+      (Sprites.player.healthBar:getHeight() - 4)
+  )
 end
 
 function Player:move(vect)

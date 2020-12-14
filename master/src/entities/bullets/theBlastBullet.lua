@@ -8,8 +8,10 @@ function TheBlastBullet:initialize(x, y, dir)
 end
 
 function TheBlastBullet:draw()
-  love.graphics.setColor(0.5, 0.4, 0)
-  love.graphics.circle('fill', self.x, self.y, 5)
+  local sprite = Sprites.player.bullets.theBlastBullet
+  love.graphics.setColor(1, 1, 1)
+  love.graphics.draw(sprite, self.x, self.y, self.dir.angle, 1, 1,
+      sprite:getWidth()/2, sprite:getHeight()/2)
 end
 
 function TheBlastBullet:onCollision(other)

@@ -56,6 +56,10 @@ function Game:draw()
     entity:draw()
   end
   
+  for i, entity in ipairs(self.entities) do
+    entity:guiDraw()
+  end
+  
   self.playerManager:draw()
   
   self.camera:detach()

@@ -17,7 +17,6 @@ end
 
 function OptionGroup:updateOption(x, y, w, h, index)
 	local upgradeName = self.options[index]
-	print(upgradeName)
 	local images = Sprites.upgrades[upgradeName]
 	-- index from self.options -> upgrade name -> appropriate upgrade images
 	

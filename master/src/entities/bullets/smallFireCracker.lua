@@ -3,13 +3,15 @@ local Bullet = require 'src.entities.bullets.bullet'
 local SmallFireCracker = Class('SmallFireCracker', Bullet)
 
 function SmallFireCracker:initialize(x, y, dir)
-  Bullet.initialize(self, x, y, 8, 8, dir)
+  Bullet.initialize(self, x, y, 16, 16, dir)
   self.speed = 750
 end
 
 function SmallFireCracker:draw()
-  love.graphics.setColor(0.7, 0.7, 0.8)
-  love.graphics.circle('fill', self.x, self.y, 4)
+  local sprite = Sprites.player.bullets.smallFireCraker
+  love.graphics.setColor(1, 1, 1)
+  love.graphics.draw(sprite, self.x, self.y, self.dir.angle, 1, 1,
+      sprite:getWidth()/2, sprite:getHeight()/2)
 end
 
 function SmallFireCracker:onCollision(other)

@@ -7,9 +7,9 @@ local TheBlastBullet = require 'src.entities.bullets.theBlastBullet'
 local SeekerBullet = require 'src.entities.bullets.seekerBullet'
 local BigFireCracker = require 'src.entities.bullets.bigFireCracker'
 
-local GameManager = Class('GameManager')
+local PlayerManager = Class('PlayerManager')
 
-function GameManager:initialize()
+function PlayerManager:initialize()
 	self.players = {}
 	
 	self.playerSpeed = 312
@@ -23,12 +23,12 @@ function GameManager:initialize()
 				end
 				
 				local spawnBullet = function()
-					local bullet = DoubleTapBullet(x, y, dir)
+					local bullet = DoubleTapBullet(player.x, player.y, dir)
 					Gamestate.current():addEntity(bullet)
 				end
 			
 				self.timer:after(0, spawnBullet)
-				self.timer:after(0.07, spawnBullet)
+				self.timer:after(0.092, spawnBullet)
 			end),
 			
 			Skill(0.24, function(self, x, y, mx, my, dir, player) -- Seeker
@@ -107,7 +107,7 @@ function GameManager:initialize()
 	)
 end
 
-function GameManager:update(dt)
+function PlayerManager:update(dt)
 	self.timer:update(dt)
 	
 	self.attackSlot:update(dt)
@@ -133,7 +133,7 @@ function GameManager:update(dt)
 	end
 end
 
-function GameManager:draw()
+function PlayerManager:draw()
 	love.graphics.setColor(1, 1, 1)
 	love.graphics.print('current attack skill: '..tostring(self.attackSlot.currentIndex),
 			0, 14)
@@ -141,7 +141,7 @@ function GameManager:draw()
 			0, 28)
 end
 
-function GameManager:getMoveDir()
+function PlayerManager:getMoveDir()
   local dir = Vector(0, 0)
 
   if love.keyboard.isScancodeDown('left') or love.keyboard.isScancodeDown('a') then
@@ -160,13 +160,13 @@ function GameManager:getMoveDir()
   return dir.normalized
 end
 
-function GameManager:onEntityAdd(entity)
+function PlayerManager:onEntityAdd(entity)
 	if entity.tag == 'player' then
 		table.insert(self.players, entity)
 	end
 end
 
-function GameManager:onEntityRemove(entity)
+function PlayerManager:onEntityRemove(entity)
 	if entity.tag == 'player' then
 		for i, player in ipairs(self.players) do
 			if player ==  entity then
@@ -176,7 +176,7 @@ function GameManager:onEntityRemove(entity)
 	end
 end
 
-function GameManager:keypressed(key, scancode)
+function PlayerManager:keypressed(key, scancode)
 	if scancode == 'q' then
 		self.attackSlot:switchSkill()
 	end
@@ -185,19 +185,19 @@ function GameManager:keypressed(key, scancode)
 	end
 end
 
-function GameManager:reCaculateStats()
+function PlayerManager:reCaculateStats()
 	for _, player in ipairs(self.players) do
 		player:reCaculateStats()
 	end
 end
 
-function GameManager:heal(health)
+function PlayerManager:heal(health)
 	for _, player in ipairs(self.players) do
 		player:heal(health)
 	end
 end
 
-function GameManager:addNewPlayer()
+function PlayerManager:addNewPlayer()
 	local vect = Vector(0, math.random(65, 150))
 	vect = vect:rotated(math.random(0, 30) * (math.pi * 2 / 30))
 	
@@ -205,4 +205,4 @@ function GameManager:addNewPlayer()
 	Gamestate.current():addEntity(player)
 end
 
-return GameManager
+return PlayerManager
