@@ -17,14 +17,14 @@ end
 
 function OptionGroup:updateOption(x, y, w, h, index)
 	local upgradeName = self.options[index]
-	local images = Sprites.upgrades[upgradeName]
+	local image = Sprites.upgrades[upgradeName]
 	-- index from self.options -> upgrade name -> appropriate upgrade images
 	
 	-- if images is nil then that means we debugging
 	love.graphics.setColor(1, 1, 1)
-	if images == nil then
+	if image == nil then
 		if self.selectedOptionIndex == index then -- if selected
-			if self.suit:Button(upgradeName, {id = index},
+			if self.suit:Button('selected', {id = index},
 					x, y, w, h).hit then
 				self.selectedOptionIndex = index
 			end
@@ -36,23 +36,48 @@ function OptionGroup:updateOption(x, y, w, h, index)
 		end
 		
 	else
-		if self.selectedOptionIndex == index then -- if selected
-			if self.suit:ImageButton(images.selected, {id = index},
-					x, y, w, h).hit then
-				self.selectedOptionIndex = index
-			end
-			
-		else
-			if self.suit:ImageButton(images.normal, {id = index, active = images.selected},
-					x, y, w, h).hit then
-				self.selectedOptionIndex = index
-			end
+		if self.suit:ImageButton(image, {id = index},
+				x, y, w, h).hit then
+			self.selectedOptionIndex = index
 		end
 	end
 end
 
 function OptionGroup:draw()
 	self.suit:draw()
+	
+	for i = 1, 3 do
+		self:drawOption(self.x + 144 * (i-1), self.y, 90, 90, i)
+	end
+end
+
+function OptionGroup:drawOption(x, y, w, h, index)
+	local upgradeName = self.options[index]
+	local image = Sprites.upgrades[upgradeName]
+	
+	love.graphics.setColor(1, 1, 1)
+	if image == nil then
+	
+	else
+		if self.suit:ImageButton(image, {id = index},
+				x, y, w, h).hovered then
+			love.graphics.setColor(0, 0, 0, 0.3)
+			love.graphics.rectangle('fill', x, y, 64, 64)
+		end
+		
+		if self.suit:ImageButton(image, {id = index},
+				x, y, w, h).hit then
+			love.graphics.setColor(0, 0, 0, 0.7)
+			love.graphics.rectangle('fill', x, y, 64, 64)
+		end
+		
+		if self.selectedOptionIndex == index then
+			love.graphics.setColor(1, 1, 1)
+			love.graphics.draw(Sprites.upgrades.selected, x + 32, y + 32, 0, 1, 1,
+					Sprites.upgrades.selected:getWidth()/2, Sprites.upgrades.selected:getHeight()/2)
+		end
+		
+	end
 end
 
 function OptionGroup:getSelectedOption()
