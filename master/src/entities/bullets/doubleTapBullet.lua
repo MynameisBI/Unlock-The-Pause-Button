@@ -25,6 +25,10 @@ function DoubleTapBullet:onCollision(other)
         5 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
     )
 		self:destroy()
+  
+  elseif other.tag == 'wall' then
+    self:destroy()
+    
   end
 end
 

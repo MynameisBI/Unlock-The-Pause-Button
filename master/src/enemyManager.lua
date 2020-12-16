@@ -4,13 +4,13 @@ local EnemyManager = Class('EnemyManager')
 
 local sw, sh = love.graphics.getDimensions()
 
-local spawnPointsPositions = {Vector(0, 0)}
---[[for i = 0, 8 do
+local spawnPointsPositions = {} --{Vector(0, 0)}
+for i = 0, 8 do
 	for j = 0, 1 do
 		table.insert(spawnPointsPositions,
 			Vector(
-				(-1 + 0.25 * i * sw),
-				sw * (j * 2 - 1)
+				(-0.8 + 1.6/8 * i * sw),
+				sw * (j * 1.6 - 0.8)
 			)
 		)
 	end
@@ -19,12 +19,12 @@ for i = 0, 6 do
 	for j = 0, 1 do
 		table.insert(spawnPointsPositions,
 			Vector(
-				sw * (j * 2 - 1),
-				(-1 + 0.25 * i * sw)
+				sw * (j * 1.6 - 0.8),
+				(-0.8 + 1.6/8 * i * sw)
 			)
 		)
 	end
-end]]
+end
 
 function EnemyManager:initialize()
 	self.timer = Timer()

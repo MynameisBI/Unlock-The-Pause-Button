@@ -150,4 +150,27 @@ function Player:setFlipped(isFlipped)
   self.isFlipped = isFlipped
 end
 
+function Player:translate(dir)
+	self.x = self.x + dir.x
+	self.y = self.y + dir.y
+	
+	local ax, ay, cols, len = Gamestate.current().bumpWorld:move(self,
+			self.x - self.w/2, self.y - self.h/2,
+      function(item, other)
+        if other.tag == 'wall' then
+          return 'slide'
+        else
+          return 'cross'
+        end
+      end )
+  self.x, self.y = ax + self.w/2, ay + self.h/2
+  
+	for i = 1, len do
+		local other = cols[i].other
+		if not other.isDestroyed and not self.isDestroyed then
+			self:onCollision(other)
+		end
+	end
+end
+
 return Player

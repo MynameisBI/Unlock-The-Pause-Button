@@ -18,7 +18,7 @@ function Bullet:draw()
 end
 
 function Bullet:onCollision(other)
-  if other.tag == 'enemy' then
+  if other.tag == 'enemy' or other.tag == 'wall' then
     self:destroy()
   end
 end

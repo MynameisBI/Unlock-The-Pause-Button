@@ -40,6 +40,7 @@ Sprites = {
 		--	normal = lg.newImage('assets/upgrades/spe_normal.png'),
 		--	selected = lg.newImage('assets/upgrades/spe_selected.png'),
 		--}
+		
 	},
 	player = {
 		healthBar = lg.newImage('assets/player/healthBar.png'),

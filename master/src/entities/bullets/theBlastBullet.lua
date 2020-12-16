@@ -25,6 +25,11 @@ function TheBlastBullet:onCollision(other)
         3 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
     )
 		self:destroy()
+  
+  
+  elseif other.tag == 'wall' then
+    self:destroy()
+    
   end
 end
 

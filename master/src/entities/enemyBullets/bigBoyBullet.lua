@@ -22,6 +22,10 @@ function BigBoyBullet:onCollision(other)
 	if other.tag == 'player' then
 		other:takeDamage(5)
 		self:destroy()
+	
+	elseif other.tag == 'wall' then
+		self:destroy()
+		
 	end
 end
 

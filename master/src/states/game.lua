@@ -1,29 +1,35 @@
-local Player = require "src.entities.player"
-local EnemyManager = require "src.enemyManager"
-local LevelManager = require "src.levelManager"
-local PlayerManager = require "src.playerManager"
-local CursorManager = require "src.cursorManager"
+local Player = require 'src.entities.player'
+local Wall = require 'src.entities.wall'
+local EnemyManager = require 'src.enemyManager'
+local LevelManager = require 'src.levelManager'
+local PlayerManager = require 'src.playerManager'
+local CursorManager = require 'src.cursorManager'
 
 local Game = {}
 
 local sw, sh = love.graphics.getDimensions()
 
 function Game:enter()
-    self.queuedState = nil
-
-    self.bumpWorld = Bump.newWorld()
-
-    self.playerManager = PlayerManager()
-    self.levelManager = LevelManager()
-
-    self.entities = {}
-    self:addEntity(Player())
-
-    self.enemyManager = EnemyManager()
-    self.cursorManager = CursorManager()
-    self.camera = Camera()
-
-    self.isInInfoScreen = false
+  self.queuedState = nil
+  
+  self.bumpWorld = Bump.newWorld()
+  
+  self.playerManager = PlayerManager()
+  self.levelManager = LevelManager()
+  
+  self.entities = {}
+  self:addEntity(Player())
+  self:addEntity(Wall(sw/2, -sh, sw * 3, 10))
+  self:addEntity(Wall(sw/2, sh * 2, sw * 3, 10))
+  self:addEntity(Wall(-sw, sh/2, 10, sh * 3))
+  self:addEntity(Wall(sw * 2, sh/2, 10, sh * 3))
+  
+  
+  self.enemyManager = EnemyManager()
+  self.cursorManager = CursorManager()
+  self.camera = Camera()
+  
+  self.isInInfoScreen = false
 end
 
 function Game:update(dt)
