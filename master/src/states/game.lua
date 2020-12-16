@@ -60,11 +60,11 @@ function Game:draw()
     entity:guiDraw()
   end
   
-  self.playerManager:draw()
-  
   self.camera:detach()
   
   self.cursorManager:draw()
+  
+  self.playerManager:draw()
   
   if self.isInInfoScreen then
     love.graphics.setColor(0, 0, 0, 0.4)

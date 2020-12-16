@@ -134,11 +134,28 @@ function PlayerManager:update(dt)
 end
 
 function PlayerManager:draw()
+	local attack, ultility
+	if self.attackSlot.currentIndex == 1 then attack = 'DOUBLE TAP'
+	elseif self.attackSlot.currentIndex == 2 then attack = 'SEEKER'
+	elseif self.attackSlot.currentIndex == 3 then attack = 'THE BLAST'
+	elseif self.attackSlot.currentIndex == 4 then attack = 'FIRE CRACKER'
+	end
+	
+	if self.ultilitySlot.currentIndex == 1 then ultility = 'DASH'
+	elseif self.ultilitySlot.currentIndex == 2 then ultility = 'STUN'
+	elseif self.ultilitySlot.currentIndex == 3 then ultility = 'REFLECT'
+	elseif self.ultilitySlot.currentIndex == 4 then ultility = 'GHOST'
+	end
+	
+	
 	love.graphics.setColor(1, 1, 1)
-	love.graphics.print('current attack skill: '..tostring(self.attackSlot.currentIndex),
-			0, 14)
-	love.graphics.print('current ultility skill: '..tostring(self.ultilitySlot.currentIndex),
-			0, 28)
+	love.graphics.setFont(Fonts.playerManager_small)
+	love.graphics.print('Weapon', 10, 454)
+	love.graphics.print('Skill', 682, 454, 0, 1, 1, 0)
+	
+	love.graphics.setFont(Fonts.playerManager_big)
+	love.graphics.print(attack, 10, 475)
+	love.graphics.print(ultility, 682, 475, 0, 1, 1, Fonts.playerManager_big:getWidth(ultility) - 58)
 end
 
 function PlayerManager:getMoveDir()

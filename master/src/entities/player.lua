@@ -47,6 +47,7 @@ function Player:update(dt)
         * (1 + Gamestate.current().levelManager:getStat('speed')/5))
   end
   
+  -- Drawing stuff
   for _, animation in pairs(self.animations) do
     animation:update(dt)
   end
