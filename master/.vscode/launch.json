@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "emmylua_new",
+            "request": "launch",
+            "name": "EmmyLua New Debug",
+            "host": "localhost",
+            "port": 9966,
+            "ext": [
+                ".lua",
+                ".lua.txt",
+                ".lua.bytes"
+            ],
+            "ideConnectDebugger": true,
+        },
+        {
+            "name": "Debug Love",
+            "type": "lua-local",
+            "request": "launch",
+            "program": {
+                "command": "E:/love-11.2.0-win64/love.exe"
+            },
+            "args": [
+                "${workspaceFolder}"
+            ]
+        }
+    ]
+}
