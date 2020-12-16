@@ -32,11 +32,11 @@ end
 
 function Skill:execute()
 	local entities = Gamestate.current().entities
-	local firtPlayer = Gamestate.current().playerManager.players[1]
 	local mx, my = Gamestate.current().camera:mousePosition()
-	local dir = Vector(mx - firtPlayer.x, my - firtPlayer.y).normalized
 	
 	for i, entity in ipairs(entities) do
+		local dir = Vector(mx - entity.x, my - entity.y).normalized
+		
 		if entity.tag == 'player' then
 			if not entity.isDashing then
 				self.activationFunc(self, entity.x, entity.y, mx, my, dir, entity)

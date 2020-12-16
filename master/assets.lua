@@ -39,6 +39,10 @@ Sprites = {
 			theBlastBullet = lg.newImage('assets/player/bullets/theBlastBullet.png'),
 			bigFireCraker = lg.newImage('assets/player/bullets/bigFireCracker.png'),
 			smallFireCraker = lg.newImage('assets/player/bullets/smallFireCracker.png'),
+		},
+		topHat = {
+			idle = lg.newImage('assets/player/topHat_idle.png'),
+			walk = lg.newImage('assets/player/topHat_walk.png'),
 		}
 	}
 }
