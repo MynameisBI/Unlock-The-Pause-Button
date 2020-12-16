@@ -5,7 +5,7 @@ local LevelUp = {}
 
 local screenWidth, screenHeight = love.graphics.getDimensions()
 local upgrades = {
-	'damage', 'health', 'speed', 'cooldown', 'lifesteal',
+	'damage', 'health', --'speed', 'cooldown', 'lifesteal',
 	'clone',
 	'pause'
 }

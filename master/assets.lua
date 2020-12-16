@@ -17,6 +17,9 @@ Sprites = {
 		cooldown = lg.newImage('assets/upgrades/cdr.png'),
 		speed = lg.newImage('assets/upgrades/spe.png'),
 		lifesteal = lg.newImage('assets/upgrades/lifesteal.png'),
+		clone = lg.newImage('assets/upgrades/clone.png'),
+		pause = lg.newImage('assets/upgrades/pause.png'),
+		
 		--damage = {
 		--	normal = lg.newImage('assets/upgrades/atk_normal.png'),
 		--	selected = lg.newImage('assets/upgrades/atk_selected.png'),
@@ -61,4 +64,6 @@ Fonts = {
 	playerManager_big = lg.newFont('assets/fonts/04B_08__.TTF', 24),
 	
 	infoScreen = lg.newFont('assets/fonts/04B_03B_.TTF', 24),
+	
+	enemyStatus = lg.newFont('assets/fonts/04B_03B_.TTF', 8),
 }

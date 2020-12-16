@@ -46,6 +46,15 @@ function Enemy:draw()
 	love.graphics.circle('fill', self.x, self.y, 15)
 end
 
+function Enemy:guiDraw()
+	if self.secondsToEndStun > 0 then
+		love.graphics.setColor(253/255, 203/255, 176/255)
+		love.graphics.setFont(Fonts.enemyStatus)
+		love.graphics.print('stunned', self.x, self.y - 18,	 0, 1, 1,
+				Fonts.enemyStatus:getWidth('stunned')/2)
+	end
+end
+
 function Enemy:findNewStep()
 	local target = self:findTarget()
 	
