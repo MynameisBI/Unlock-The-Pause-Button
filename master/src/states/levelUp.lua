@@ -19,9 +19,9 @@ function LevelUp:enter(gameState)
 	self.levelManager = gameState.levelManager
 	
 	local o1, o2, o3 = self:chooseUpgradeOptions()
-	self.upgradeGroup = OptionGroup(186, 50, o1, o2, o3)
+	self.upgradeGroup = OptionGroup(186, 50, 'upgrade', o1, o2, o3)
 	
-	self.obstacleGroup = OptionGroup(186, 370, 'game speed', 'cursor', 'not found')
+	self.obstacleGroup = OptionGroup(186, 370, 'obstacle', 'game speed', 'cursor', 'not found')
 	
 	self.confirmButton = ConfirmButton:new(screenWidth/2 - 60, screenHeight/2 - 35,
 			self.upgradeGroup, self.obstacleGroup)

@@ -21,6 +21,12 @@ Sprites = {
 		clone = lg.newImage('assets/upgrades/clone.png'),
 		pause = lg.newImage('assets/upgrades/pause.png'),
 	},
+	obstacles = {
+		selected = lg.newImage('assets/obstacles/selected.png'),
+		
+		['game speed'] = lg.newImage('assets/obstacles/gameSpeed.png'),
+		cursor = lg.newImage('assets/obstacles/cursor.png'),
+	},
 	player = {
 		healthBar = lg.newImage('assets/player/healthBar.png'),
 		bullets = {

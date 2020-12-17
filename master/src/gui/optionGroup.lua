@@ -1,9 +1,10 @@
 local OptionGroup = Class('OptionGroup')
 
-function OptionGroup:initialize(x, y,...)
+function OptionGroup:initialize(x, y, optionType, ...)
 	self.x, self.y = x, y
 	
 	self.selectedOptionIndex = nil
+	self.optionType = optionType
 	self.options = {...}
 	
 	self.suit = Suit.new()
@@ -17,7 +18,7 @@ end
 
 function OptionGroup:updateOption(x, y, w, h, index)
 	local upgradeName = self.options[index]
-	local image = Sprites.upgrades[upgradeName]
+	local image = Sprites[self.optionType..'s'][upgradeName]
 	-- index from self.options -> upgrade name -> appropriate upgrade images
 	
 	-- if images is nil then that means we debugging
@@ -53,7 +54,7 @@ end
 
 function OptionGroup:drawOption(x, y, w, h, index)
 	local upgradeName = self.options[index]
-	local image = Sprites.upgrades[upgradeName]
+	local image = Sprites[self.optionType..'s'][upgradeName]
 	
 	love.graphics.setColor(1, 1, 1)
 	if image == nil then
@@ -73,7 +74,7 @@ function OptionGroup:drawOption(x, y, w, h, index)
 		
 		if self.selectedOptionIndex == index then
 			love.graphics.setColor(1, 1, 1)
-			love.graphics.draw(Sprites.upgrades.selected, x + 32, y + 32, 0, 1, 1,
+			love.graphics.draw(Sprites[self.optionType..'s'].selected, x + 32, y + 32, 0, 1, 1,
 					Sprites.upgrades.selected:getWidth()/2, Sprites.upgrades.selected:getHeight()/2)
 		end
 		
