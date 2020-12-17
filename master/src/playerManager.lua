@@ -17,7 +17,7 @@ function PlayerManager:initialize()
 	self.timer = Timer()
 	
 	self.attackSlot = SkillSlot(
-			Skill(0.5, function(self, x, y, mx, my, dir, player) -- Double Tap
+			Skill(0.6, function(self, x, y, mx, my, dir, player) -- Double Tap
 				if player.isGhostingLastFrame then
 					return
 				end
@@ -31,7 +31,7 @@ function PlayerManager:initialize()
 				self.timer:after(0.092, spawnBullet)
 			end),
 			
-			Skill(0.24, function(self, x, y, mx, my, dir, player) -- Seeker
+			Skill(0.34, function(self, x, y, mx, my, dir, player) -- Seeker
 				if player.isGhostingLastFrame then
 					return
 				end
@@ -40,12 +40,12 @@ function PlayerManager:initialize()
 				Gamestate.current():addEntity(bullet)
 			end),
 			
-			Skill(0.66, function(self, x, y, mx, my, dir, player) -- The Blast
+			Skill(0.78, function(self, x, y, mx, my, dir, player) -- The Blast
 				if player.isGhostingLastFrame then
 					return
 				end
 				
-				for i = 1, 7 do
+				for i = 1, 6 do
 					local angle = math.pi/15 - math.pi/45 * (i-1)
 					local bullet = TheBlastBullet(x, y, dir:rotated(angle))
 					Gamestate.current():addEntity(bullet)

@@ -28,7 +28,7 @@ function Game:enter()
   self.enemyManager = EnemyManager()
   self.cursorManager = CursorManager()
   self.camera = Camera()
-  
+    self.camera:zoom(0.5)
   self.isInInfoScreen = false
 end
 

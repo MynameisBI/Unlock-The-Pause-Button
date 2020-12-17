@@ -7,7 +7,8 @@ Sprites = {
 	enemies = {
 		lg.newImage('assets/enemies/01.png'),
 		lg.newImage('assets/enemies/02.png'),
-		lg.newImage('assets/enemies/03.png')
+		lg.newImage('assets/enemies/03.png'),
+		bullet = lg.newImage('assets/enemies/enemyBullet.png')
 	},
 	upgrades = {
 		selected = lg.newImage('assets/upgrades/selected.png'),
@@ -19,28 +20,6 @@ Sprites = {
 		lifesteal = lg.newImage('assets/upgrades/lifesteal.png'),
 		clone = lg.newImage('assets/upgrades/clone.png'),
 		pause = lg.newImage('assets/upgrades/pause.png'),
-		
-		--damage = {
-		--	normal = lg.newImage('assets/upgrades/atk_normal.png'),
-		--	selected = lg.newImage('assets/upgrades/atk_selected.png'),
-		--},
-		--health = {
-		--	normal = lg.newImage('assets/upgrades/cdr_normal.png'),
-		--	selected = lg.newImage('assets/upgrades/cdr_selected.png'),
-		--},
-		--speed = {
-		--	normal = lg.newImage('assets/upgrades/hp_normal.png'),
-		--	selected = lg.newImage('assets/upgrades/hp_selected.png'),
-		--},
-		--cooldown = {
-		--	normal = lg.newImage('assets/upgrades/lifesteal_normal.png'),
-		--	selected = lg.newImage('assets/upgrades/lifesteal_selected.png'),
-		--},
-		--lifesteal = {
-		--	normal = lg.newImage('assets/upgrades/spe_normal.png'),
-		--	selected = lg.newImage('assets/upgrades/spe_selected.png'),
-		--}
-		
 	},
 	player = {
 		healthBar = lg.newImage('assets/player/healthBar.png'),

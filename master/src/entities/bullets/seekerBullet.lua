@@ -12,6 +12,9 @@ function SeekerBullet:initialize(x, y, dir)
 	self.timer:after(0.2, function()
 		self.isWaiting = false
 	end)
+  self.timer:after(6, function()
+    self:destroy()
+  end)
 end
 
 function SeekerBullet:update(dt)

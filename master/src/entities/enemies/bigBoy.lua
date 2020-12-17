@@ -5,7 +5,7 @@ local Enemy = require 'src.entities.enemies.enemy'
 local BigBoy = Class('BigBoy', Enemy)
 
 function BigBoy:initialize(x, y)
-	Enemy.initialize(self, x, y, 36, 36, 3.86, 110, math.pi/4.2)
+	Enemy.initialize(self, x, y, 36, 36, 5.11, 110, math.pi/4.2)
 	
 	self.timer = Timer()
 	self.isAttackReady = true

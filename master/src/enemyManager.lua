@@ -9,8 +9,8 @@ for i = 0, 8 do
 	for j = 0, 1 do
 		table.insert(spawnPointsPositions,
 			Vector(
-				(-0.8 + 1.6/8 * i * sw),
-				sw * (j * 1.6 - 0.8)
+				(-0.8 + 2.6/8 * i) * sw,
+				(-0.8 + 2.6 * j) * sh
 			)
 		)
 	end
@@ -19,8 +19,8 @@ for i = 0, 6 do
 	for j = 0, 1 do
 		table.insert(spawnPointsPositions,
 			Vector(
-				sw * (j * 1.6 - 0.8),
-				(-0.8 + 1.6/8 * i * sw)
+				(-0.8 + 2.6 * j) * sw,
+				(-0.8 + 2.6/8 * (i+1)) * sh
 			)
 		)
 	end
@@ -49,18 +49,21 @@ function EnemyManager:startNextWave()
 	
 	for i = 1, self.currentWave do
 		local pos = spawnPointsPositions[math.random(1, #spawnPointsPositions)]
+		print(pos)
 		local spawner = Spawner(pos.x, pos.y, 'TouchAndExplode')
 		table.insert(self.spawners, spawner)
 	end
 	
 	for i = 1, self.currentWave/3 do
 		local pos = spawnPointsPositions[math.random(1, #spawnPointsPositions)]
+		print(pos)
 		local spawner = Spawner(pos.x, pos.y, 'BulletBurster')
 		table.insert(self.spawners, spawner)
 	end
 	
 	for i= 1, self.currentWave do
 		local pos = spawnPointsPositions[math.random(1, #spawnPointsPositions)]
+		print(pos)
 		local spawner = Spawner(pos.x, pos.y, 'BigBoy')
 		table.insert(self.spawners, spawner)
 	end

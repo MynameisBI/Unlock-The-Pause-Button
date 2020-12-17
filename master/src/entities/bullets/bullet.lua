@@ -6,10 +6,16 @@ function Bullet:initialize(x, y, w, h, dir)
   Entity.initialize(self, x, y, w or 16, h or 16)
   self.dir = dir
   self.speed = 840
+  
+  self.timer = Timer()
+  self.timer:after(6, function()
+    self:destroy()
+  end)
 end
 
 function Bullet:update(dt)
   self:translate(self.dir * self.speed * dt)
+  self.timer:update(dt)
 end
 
 function Bullet:draw()
@@ -18,7 +24,7 @@ function Bullet:draw()
 end
 
 function Bullet:onCollision(other)
-  if other.tag == 'enemy' or other.tag == 'wall' then
+  if other.tag == 'enemy' then
     self:destroy()
   end
 end

@@ -12,6 +12,9 @@ function BigFireCracker:initialize(x, y, dir)
     self:destroy()
     self:spawnSmallFireCrackers()
   end)
+  self.timer:after(6, function()
+    self:destroy()
+  end)
 end
 
 function BigFireCracker:update(dt)
