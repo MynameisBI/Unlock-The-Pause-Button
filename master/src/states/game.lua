@@ -135,7 +135,6 @@ function Game:removeEntity(entity)
     end
 
     self.playerManager:onEntityRemove(entity)
-    self.enemyManager:onEntityRemove(entity)
 end
 
 function Game:keypressed(key, scancode)

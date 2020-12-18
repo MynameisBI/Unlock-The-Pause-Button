@@ -69,24 +69,22 @@ function EnemyManager:startNextWave()
 	end
 end
 
-function EnemyManager:onEntityRemove(entity)
-	if entity.tag == 'enemy' then
-		local enemies = {}
-		for _, entity_ in ipairs(Gamestate.current().entities) do
-			if entity_.tag == 'enemy' then
-				table.insert(enemies, entity_)
-			end
+function EnemyManager:onEnemyDie(enemy)
+	local enemies = {}
+	for _, entity_ in ipairs(Gamestate.current().entities) do
+		if entity_.tag == 'enemy' and entity_.isDead == false then
+			table.insert(enemies, entity_)
 		end
+	end
+	
+	if #enemies == 0 then
+		self.timer:after(2, function()
+			Gamestate.current().levelManager:onWaveFinish(self.currentWave)
 		
-		if #enemies == 0 then
 			self.timer:after(2, function()
-				Gamestate.current().levelManager:onWaveFinish(self.currentWave)
-			
-				self.timer:after(2, function()
-					self:startNextWave()
-				end)
+				self:startNextWave()
 			end)
-		end
+		end)
 	end
 end
 

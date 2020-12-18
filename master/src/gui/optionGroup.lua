@@ -15,7 +15,7 @@ local descriptions = {
 		pause = 'unlock the pause button',
 	},
 	obstacle = {
-		['game speed'] = 'increase the game speed',
+		['game speed'] = 'increase game speed',
 		cursor = 'random cursors appear on the screen',
 	}
 }

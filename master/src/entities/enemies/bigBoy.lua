@@ -24,7 +24,7 @@ function BigBoy:update(dt)
 end
 
 function BigBoy:onCollision(other)
-	if other.tag == 'player' and self.isAttackReady then
+	if other.tag == 'player' and self.isAttackReady and self.isDead == false then
 		other:takeDamage(20)
 		
 		self.isAttackReady = false
@@ -42,12 +42,16 @@ function BigBoy:takeDamage(damage)
 			Gamestate.current():addEntity(bullet)
 		end
 		
-		self:destroy()
+		self:die()
 	end
 end
 
 function BigBoy:draw()
-	love.graphics.setColor(1, 1, 1)
+	if self.isDead then
+		love.graphics.setColor(0.5, 0.5, 0.5, 0.7)
+	else
+		love.graphics.setColor(1, 1, 1)
+	end
 	love.graphics.draw(Sprites.enemies[3], self.x, self.y, 0, 1, 1,
 			Sprites.enemies[3]:getWidth()/2, Sprites.enemies[3]:getHeight()/2)
 end

@@ -4,6 +4,7 @@ local Enemy = Class('Enemy', Entity)
 
 function Enemy:initialize(x, y, w, h, speed, stepLength, maxSpreadAngle)
 	Entity.initialize(self, x, y, w, h)
+	self.isDead = false
 	self.timer = Timer()
 	
 	self.speed = speed or 4.6
@@ -33,10 +34,12 @@ function Enemy:move(dt)
 		local pos = Vector(self.x, self.y)
 		local toBePos = pos + (self.currentStep - pos) * self.speed * dt
 		self:translate(toBePos - pos)
-
-		local distToStep = (self.currentStep - Vector(self.x, self.y)).length
-		if distToStep <= 5 then
-			self.currentStep = self:findNewStep()
+		
+		if not self.isDead then
+			local distToStep = (self.currentStep - Vector(self.x, self.y)).length
+			if distToStep <= 5 then
+				self.currentStep = self:findNewStep()
+			end
 		end
 	end
 end
@@ -88,12 +91,21 @@ function Enemy:takeDamage(damage)
 	self.health = self.health - damage
 	
 	if self.health <= 0 then
-		self:destroy()
+		self:die()
 	end
 end
 
 function Enemy:setStun()
 	self.secondsToEndStun = 1
+end
+
+function Enemy:die()
+	self.isDead = true
+	
+	self.timer:after(24, function()
+		self:destroy()
+	end)
+	Gamestate.current().enemyManager:onEnemyDie(self)
 end
 
 return Enemy

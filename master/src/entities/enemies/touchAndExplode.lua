@@ -22,7 +22,7 @@ function TouchAndExplode:update(dt)
 end
 
 function TouchAndExplode:onCollision(other)
-	if other.tag == 'player' and self.isAttackReady then
+	if other.tag == 'player' and self.isAttackReady and self.isDead == false then
 		other:takeDamage(8)
 		
 		self.isAttackReady = false
@@ -30,16 +30,12 @@ function TouchAndExplode:onCollision(other)
 	end
 end
 
-function TouchAndExplode:takeDamage(damage)
-	self.health = self.health - damage
-	
-	if self.health <= 0 then
-		self:destroy()
-	end
-end
-
 function TouchAndExplode:draw()
-	love.graphics.setColor(1, 1, 1)
+	if self.isDead then
+		love.graphics.setColor(0.5, 0.5, 0.5, 0.7)
+	else
+		love.graphics.setColor(1, 1, 1)
+	end
 	love.graphics.draw(Sprites.enemies[1], self.x, self.y, 0, 1, 1,
 			Sprites.enemies[1]:getWidth()/2, Sprites.enemies[1]:getHeight()/2)
 end

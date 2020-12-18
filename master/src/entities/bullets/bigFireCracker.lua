@@ -41,7 +41,7 @@ end
 function BigFireCracker:onCollision(other)
   local levelManager = Gamestate.current().levelManager
   
-  if other.tag == 'enemy' then
+  if other.tag == 'enemy' and other.isDead == false then
     other:takeDamage(
         10 * (1 + levelManager:getStat('damage')/4)
     )

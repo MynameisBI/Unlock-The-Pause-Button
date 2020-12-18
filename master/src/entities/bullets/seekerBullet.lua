@@ -28,7 +28,7 @@ end
 function SeekerBullet:onCollision(other)
 	local levelManager = Gamestate.current().levelManager
 	
-  if other.tag == 'enemy' then
+  if other.tag == 'enemy' and other.isDead == false then
     other:takeDamage(
         6 * (1 + levelManager:getStat('damage')/4)
     )

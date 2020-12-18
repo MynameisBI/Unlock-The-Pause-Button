@@ -17,7 +17,7 @@ end
 function TheBlastBullet:onCollision(other)
   local levelManager = Gamestate.current().levelManager
   
-  if other.tag == 'enemy' then
+  if other.tag == 'enemy' and other.isDead == false then
     other:takeDamage(
         3 * (1 + Gamestate.current().levelManager:getStat('damage')/4)
     )
