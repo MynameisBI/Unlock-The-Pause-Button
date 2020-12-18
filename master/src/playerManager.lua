@@ -218,6 +218,10 @@ function PlayerManager:addNewPlayer()
 	local vect = Vector(0, math.random(65, 150))
 	vect = vect:rotated(math.random(0, 30) * (math.pi * 2 / 30))
 	
+	for _, p in pairs(self.players) do
+		p.health = p.health/2
+	end
+	
 	local player = Player(self.players[1].x + vect.x, self.players[1].y + vect.y)
 	Gamestate.current():addEntity(player)
 end

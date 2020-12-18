@@ -44,7 +44,9 @@ Sprites = {
 }
 
 Fonts = {
-	menuFont = lg.newFont('assets/fonts/04B_03B_.TTF', 40),
+	menuFont_small = lg.newFont('assets/fonts/04B_03B_.TTF', 32),
+	menuFont_medium = lg.newFont('assets/fonts/04B_08__.TTF', 40),
+	menuFont_veryBig = lg.newFont('assets/fonts/04B_08__.TTF', 56),
 	
 	playerManager_small = lg.newFont('assets/fonts/04B_08__.TTF', 16),
 	playerManager_big = lg.newFont('assets/fonts/04B_08__.TTF', 24),
@@ -52,4 +54,6 @@ Fonts = {
 	infoScreen = lg.newFont('assets/fonts/04B_03B_.TTF', 24),
 	
 	enemyStatus = lg.newFont('assets/fonts/04B_03B_.TTF', 8),
+	
+	optionDescription = lg.newFont('assets/fonts/04B_08__.TTF', 16)
 }

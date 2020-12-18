@@ -29,10 +29,6 @@ function BulletBursterBullet:onCollision(other)
 	if other.tag == 'player' then
 		other:takeDamage(12)
 		self:destroy()
-	
-	elseif other.tag == 'wall' then
-		self:destroy()
-		
 	end
 end
 

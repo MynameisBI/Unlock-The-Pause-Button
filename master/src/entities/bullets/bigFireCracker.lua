@@ -50,9 +50,6 @@ function BigFireCracker:onCollision(other)
     )
 		self:destroy()
   
-  elseif other.tag == 'wall' then
-    self:destroy()
-    
   end
 end
 

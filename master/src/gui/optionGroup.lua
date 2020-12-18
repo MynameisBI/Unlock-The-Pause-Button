@@ -1,5 +1,25 @@
 local OptionGroup = Class('OptionGroup')
 
+local sw, sh = love.graphics.getDimensions()
+
+local descriptions = {
+	upgrade = {
+		damage = 'increase weapon damage',
+		speed = 'increase movement speed',
+		health = 'increase max health',
+		cooldown = 'reduce weapon and skill cooldown',
+		lifesteal = 'heal more when you deal damage',
+		
+		clone = 'lose half of your current health to spawn a clone',
+		
+		pause = 'unlock the pause button',
+	},
+	obstacle = {
+		['game speed'] = 'increase the game speed',
+		cursor = 'random cursors appear on the screen',
+	}
+}
+
 function OptionGroup:initialize(x, y, optionType, ...)
 	self.x, self.y = x, y
 	
@@ -53,8 +73,8 @@ function OptionGroup:draw()
 end
 
 function OptionGroup:drawOption(x, y, w, h, index)
-	local upgradeName = self.options[index]
-	local image = Sprites[self.optionType..'s'][upgradeName]
+	local optionName = self.options[index]
+	local image = Sprites[self.optionType..'s'][optionName]
 	
 	love.graphics.setColor(1, 1, 1)
 	if image == nil then
@@ -64,6 +84,17 @@ function OptionGroup:drawOption(x, y, w, h, index)
 				x, y, w, h).hovered then
 			love.graphics.setColor(0, 0, 0, 0.3)
 			love.graphics.rectangle('fill', x, y, 64, 64)
+			
+			local description, dy = descriptions[self.optionType][optionName]
+			if self.optionType == 'upgrade' then dy = 132
+			else dy = 340
+			end
+			if description ~= nil then
+				love.graphics.setFont(Fonts.optionDescription)
+				love.graphics.setColor(1, 1, 1)
+				love.graphics.print(description, sw/2, dy, 0, 1, 1,
+						Fonts.optionDescription:getWidth(description)/2)
+			end
 		end
 		
 		if self.suit:ImageButton(image, {id = index},

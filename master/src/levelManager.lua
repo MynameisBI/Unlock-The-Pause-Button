@@ -8,7 +8,7 @@ function LevelManager:initialize()
 		health = 0,
 		speed = 0,
 		cooldown = 0,
-		lifesteal = 1,
+		lifesteal = 2,
 		
 		pause = false,
 	}

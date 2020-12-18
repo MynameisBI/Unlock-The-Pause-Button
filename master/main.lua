@@ -34,6 +34,6 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.print("FPS: " .. tostring(love.timer.getFPS()))
+    --love.graphics.setColor(1, 1, 1)
+    --love.graphics.print("FPS: " .. tostring(love.timer.getFPS()))
 end
