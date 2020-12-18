@@ -67,10 +67,13 @@ function Game:update(dt)
 end
 
 function Game:draw()
-    love.graphics.setBackgroundColor(50 / 255, 51 / 255, 83 / 255)
+    love.graphics.setBackgroundColor(69/255, 41/255, 63/255)
 
     self.camera:attach()
 
+    love.graphics.setColor(50/255, 51/255, 83/255)
+    love.graphics.rectangle('fill', -sw - 30, -sh - 30, sw * 3 + 60, sh * 3 + 60)
+    
     for i, entity in ipairs(self.entities) do
         entity:draw()
     end

@@ -102,7 +102,7 @@ end
 function Enemy:die()
 	self.isDead = true
 	
-	self.timer:after(24, function()
+	self.timer:after(120, function()
 		self:destroy()
 	end)
 	Gamestate.current().enemyManager:onEnemyDie(self)

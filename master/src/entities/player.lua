@@ -49,7 +49,11 @@ function Player:update(dt)
   
   -- Drawing stuff
   for _, animation in pairs(self.animations) do
-    animation:update(dt)
+    if self.isGhostingLastFrame then
+      animation:update(dt * 1.85)
+    else
+      animation:update(dt)
+    end
   end
   self:checkDirectionBaseOnCursor()
 end
@@ -88,7 +92,7 @@ function Player:move(vect)
     if not self.isGhostingLastFrame then
       self:translate(vect)
     elseif self.isGhostingLastFrame then
-      self:translate(vect * 3)
+      self:translate(vect * 1.75)
     end
   end
 end

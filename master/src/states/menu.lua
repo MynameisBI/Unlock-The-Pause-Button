@@ -13,7 +13,7 @@ function Menu:enter()
 end
 
 function Menu:update(dt)
-	if self.suit:Button('PLAY', {font = Fonts.menuFont_medium}, sw/2 - 70, 265,
+	if self.suit:Button('PLAY', {font = Fonts.menuFont_medium}, sw/2 - 70, 275,
 			140, 40).hit then
 		Gamestate.switch(Game)
 	end
@@ -31,10 +31,10 @@ function Menu:draw()
       Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
 	
 	love.graphics.setFont(Fonts.menuFont_small)
-	love.graphics.print('UNLOCK THE', sw/2, 60, 0, 1, 1,
+	love.graphics.print('UNLOCK THE', sw/2, 75, 0, 1, 1,
 			Fonts.menuFont_small:getWidth('UNLOCK THE')/2)
 	love.graphics.setFont(Fonts.menuFont_veryBig)
-	love.graphics.print('PAUSE BUTTON', sw/2, 100, 0, 1, 1,
+	love.graphics.print('PAUSE BUTTON', sw/2, 115, 0, 1, 1,
 			Fonts.menuFont_veryBig:getWidth('PAUSE BUTTON')/2)
 end
 

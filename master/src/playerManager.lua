@@ -144,7 +144,7 @@ function PlayerManager:draw()
 	if self.ultilitySlot.currentIndex == 1 then ultility = 'DASH'
 	elseif self.ultilitySlot.currentIndex == 2 then ultility = 'STUN'
 	elseif self.ultilitySlot.currentIndex == 3 then ultility = 'REFLECT'
-	elseif self.ultilitySlot.currentIndex == 4 then ultility = 'GHOST'
+	elseif self.ultilitySlot.currentIndex == 4 then ultility = 'SPRINT'
 	end
 	
 	

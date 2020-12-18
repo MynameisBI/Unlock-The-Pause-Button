@@ -47,23 +47,20 @@ end
 function EnemyManager:startNextWave()
 	self.currentWave = self.currentWave + 1
 	
-	for i = 1, self.currentWave do
+	for i = 1, self.currentWave * 1.75 + 1 do
 		local pos = spawnPointsPositions[math.random(1, #spawnPointsPositions)]
-		print(pos)
 		local spawner = Spawner(pos.x, pos.y, 'TouchAndExplode')
 		table.insert(self.spawners, spawner)
 	end
 	
-	for i = 1, self.currentWave/3 do
+	for i = 1, self.currentWave * 1.5 - 1 do
 		local pos = spawnPointsPositions[math.random(1, #spawnPointsPositions)]
-		print(pos)
 		local spawner = Spawner(pos.x, pos.y, 'BulletBurster')
 		table.insert(self.spawners, spawner)
 	end
 	
-	for i= 1, self.currentWave do
+	for i = 1, self.currentWave * 1.25 - 3.75 do
 		local pos = spawnPointsPositions[math.random(1, #spawnPointsPositions)]
-		print(pos)
 		local spawner = Spawner(pos.x, pos.y, 'BigBoy')
 		table.insert(self.spawners, spawner)
 	end
