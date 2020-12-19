@@ -31,6 +31,8 @@ function Game:enter()
   self.camera = Camera()
     self.camera:zoom(0.5)
   self.isInInfoScreen = false
+    
+    self.suit = Suit.new()
 end
 
 function Game:update(dt)
@@ -54,18 +56,13 @@ function Game:update(dt)
         Gamestate.push(self.queuedState.state, unpack(self.queuedState.args))
         self.queuedState = nil
     end
-
-    if
-        Suit.ImageButton(
-            love.graphics.newImage("assets/enemies/01.png"),
-            {
-                hovered = love.graphics.newImage("assets/enemies/02.png"),
-                active = love.graphics.newImage("assets/enemies/02.png")
-            },
-            100,
-            100
-        ).hit
-     then
+    
+    if self.levelManager:getStat('pause') == true then
+        if self.suit:ImageButton(Sprites.pause.normal,
+                {hovered = Sprites.pause.hovered, active = Sprites.pause.active},
+                sw - 28, 6).hit then
+            self:queueState(Pause)
+        end
     end
 end
 
@@ -125,6 +122,8 @@ function Game:draw()
             Fonts.infoScreen:getWidth("PRESS M TO RETURN TO MENU") / 2
         )
     end
+    
+    self.suit:draw()
 end
 
 function Game:addEntity(entity)

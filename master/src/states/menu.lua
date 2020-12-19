@@ -4,7 +4,6 @@ local sw, sh = love.graphics.getDimensions()
 
 function Menu:enter()
 	self.suit = Suit.new()
-	self.suit.font = Fonts.menuFont
 	self.suit.theme.color = {
 		normal = {bg = {0, 0, 0, 0}, fg = {1, 1, 1, 1}},
 		hovered = {bg = {0, 0, 0, 0}, fg = {230/255, 144/255, 78/255, 1}},
@@ -24,17 +23,17 @@ function Menu:draw()
 	
 	self.suit:draw()
 	
-	love.graphics.setColor(1, 1, 1)
-	local mx, my = love.mouse.getPosition()
-  love.graphics.draw(Sprites.cursor, mx, my, 0, 1, 1,
-      Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
-	
 	love.graphics.setFont(Fonts.menuFont_small)
 	love.graphics.print('UNLOCK THE', sw/2, 75, 0, 1, 1,
 			Fonts.menuFont_small:getWidth('UNLOCK THE')/2)
 	love.graphics.setFont(Fonts.menuFont_veryBig)
 	love.graphics.print('PAUSE BUTTON', sw/2, 115, 0, 1, 1,
 			Fonts.menuFont_veryBig:getWidth('PAUSE BUTTON')/2)
+	
+	love.graphics.setColor(1, 1, 1)
+	local mx, my = love.mouse.getPosition()
+  love.graphics.draw(Sprites.cursor, mx, my, 0, 1, 1,
+      Sprites.cursor:getWidth()/2, Sprites.cursor:getHeight()/2)
 end
 
 return Menu

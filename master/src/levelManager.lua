@@ -10,7 +10,7 @@ function LevelManager:initialize()
 		cooldown = 0,
 		lifesteal = 2,
 		
-		pause = false,
+		pause = true,
 	}
 	
 	self.obstacles = {

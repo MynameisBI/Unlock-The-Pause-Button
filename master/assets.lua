@@ -4,6 +4,11 @@ local lg = love.graphics
 
 Sprites = {
 	cursor = lg.newImage('assets/cursor.png'),
+	pause = {
+		normal = lg.newImage('assets/pause_normal.png'),
+		hovered = lg.newImage('assets/pause_hovered.png'),
+		active = lg.newImage('assets/pause_active.png'),
+	},
 	enemies = {
 		lg.newImage('assets/enemies/01.png'),
 		lg.newImage('assets/enemies/02.png'),
