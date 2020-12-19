@@ -1,4 +1,5 @@
 local Entity = require 'src.entities.entity'
+local AfterImage = require 'src.decorations.afterImage'
 
 local Player = Class('Player', Entity)
 
@@ -15,7 +16,7 @@ function Player:initialize(x, y)
   self.health = baseHealth
   self.isInvicible = false
   
-  self.dashSpeed = 400
+  self.dashSpeed = 700
   self.isDashing = false
   self.dashDir = nil
   
@@ -34,6 +35,13 @@ function Player:initialize(x, y)
   self.animations.walk = Anim8.newAnimation(grid('1-4', 1), 0.2)
   
   self.isFlipped = true
+  
+  self.timer:every(0.054, function()
+    if self.isDashing then
+      local afterImage = AfterImage(self.x, self.y, self.isFlipped)
+      Gamestate.current():addEntity(afterImage)
+    end
+  end)
 end
 
 function Player:update(dt)
@@ -108,7 +116,7 @@ function Player:dash(dir)
 end
 
 function Player:takeDamage(damage)
-  if not self.isInvicible then
+  if not self.isInvicible and not self.isDashing then
     self.health = self.health - damage
   
     if self.health <= 0 then

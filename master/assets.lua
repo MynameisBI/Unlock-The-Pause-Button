@@ -37,6 +37,7 @@ Sprites = {
 			smallFireCraker = lg.newImage('assets/player/bullets/smallFireCracker.png'),
 		},
 		topHat = {
+			normal = lg.newImage('assets/player/topHat_normal.png'),
 			idle = lg.newImage('assets/player/topHat_idle.png'),
 			walk = lg.newImage('assets/player/topHat_walk.png'),
 		}

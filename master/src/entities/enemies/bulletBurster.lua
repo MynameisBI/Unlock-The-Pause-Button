@@ -5,7 +5,7 @@ local Enemy = require 'src.entities.enemies.enemy'
 local BulletBurster = Class('BulletBurster', Enemy)
 
 local d_DistToTarget = {
-	400, 270, 100
+	460, 300, 90
 }
 local maxSpreadAngle2 = -math.pi/18
 local bulletSpread = math.pi/6
@@ -13,7 +13,7 @@ local bulletSpread = math.pi/6
 function BulletBurster:initialize(x, y)
 	Enemy.initialize(self, x, y, 20, 20, 3.2, 80, math.pi/4)
 	
-	self.timer:every(1.6 + math.random(30, 60) / 10, function()
+	self.shootTimer = self.timer:every(1.4 + math.random(30, 60) / 10, function()
 		local target = self:findTarget()
 		local vect = Vector(target.x - self.x, target.y - self.y)
 		local dist, dir = vect.length, vect.normalized
@@ -64,6 +64,17 @@ function BulletBurster:findNewStep()
 	local newStep = Vector(self.x, self.y) + dir:rotated(angle) * self.stepLength
 	
 	return newStep
+end
+
+function BulletBurster:die()
+	self.timer:cancel(self.shootTimer)
+	
+	self.isDead = true
+	
+	self.timer:after(120, function()
+		self:destroy()
+	end)
+	Gamestate.current().enemyManager:onEnemyDie(self)
 end
 
 return BulletBurster

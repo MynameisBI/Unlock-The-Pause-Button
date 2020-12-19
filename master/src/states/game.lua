@@ -134,6 +134,10 @@ function Game:removeEntity(entity)
     for i, entity_ in ipairs(self.entities) do
         if entity == entity_ then
             table.remove(self.entities, i)
+    
+            if self.bumpWorld:hasItem(entity) then
+                self.bumpWorld:remove(entity)
+            end
         end
     end
 

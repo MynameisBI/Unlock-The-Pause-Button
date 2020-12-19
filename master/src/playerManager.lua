@@ -215,7 +215,7 @@ function PlayerManager:heal(health)
 end
 
 function PlayerManager:addNewPlayer()
-	local vect = Vector(0, math.random(65, 150))
+	local vect = Vector(0, math.random(90, 170))
 	vect = vect:rotated(math.random(0, 30) * (math.pi * 2 / 30))
 	
 	for _, p in pairs(self.players) do
