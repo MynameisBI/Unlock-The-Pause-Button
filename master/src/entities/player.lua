@@ -146,6 +146,8 @@ function Player:takeDamage(damage)
         
       end
     end
+    
+    Gamestate.current():shakeScreen(0.32, 6)
   end
 end
 

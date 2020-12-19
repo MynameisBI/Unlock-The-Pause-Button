@@ -15,7 +15,7 @@ end
 
 function End:update(dt)
 	if self.suit:Button('TRY AGAIN', {font = Fonts.menuFont_medium},
-			sw/2 - 150, 240, 300, 120).hit then
+			sw/2 - 150, 240, 300, 70).hit then
 		Gamestate.switch(Game)
 	end
 	if self.suit:Button('MAIN MENU', {font = Fonts.menuFont_verySmall},

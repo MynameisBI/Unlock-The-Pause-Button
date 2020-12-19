@@ -195,4 +195,14 @@ function Game:toggleInfoScreen()
     end
 end
 
+function Game:shakeScreen(duration, intensity)
+    local ox, oy = self.camera:position()
+    self.timer:during(duration, function()
+        self.camera:lookAt(ox + math.random(-intensity, intensity),
+                oy + math.random(-intensity, intensity))
+    end, function()
+    self.camera:lookAt(ox, oy)
+end)
+end
+
 return Game

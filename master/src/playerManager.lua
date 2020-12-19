@@ -164,7 +164,8 @@ function PlayerManager:draw()
 		else color = {179/255, 56/255, 49/255}
 		end
 	else
-		if self.players[1].isGhostingLastFrame then color = {145/255, 219/255, 105/255}
+		if self.players[1] == nil then color = {1, 1, 1}
+		elseif self.players[1].isGhostingLastFrame then color = {145/255, 219/255, 105/255}
 		else color = {1, 1, 1}
 		end
 	end
