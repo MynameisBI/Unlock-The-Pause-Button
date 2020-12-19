@@ -23,4 +23,8 @@ function SkillSlot:useSkill()
 	self.skills[self.currentIndex]:activate()
 end
 
+function SkillSlot:isCurrentSkillReady()
+	return self.skills[self.currentIndex].isReady
+end
+
 return SkillSlot

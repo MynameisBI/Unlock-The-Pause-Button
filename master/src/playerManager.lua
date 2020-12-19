@@ -153,8 +153,22 @@ function PlayerManager:draw()
 	love.graphics.print('Weapon', 10, 454)
 	love.graphics.print('Skill', 682, 454, 0, 1, 1, 0)
 	
+	
 	love.graphics.setFont(Fonts.playerManager_big)
+	love.graphics.setColor(1, 1, 1)
 	love.graphics.print(attack, 10, 475)
+	
+	local color
+	if ultility ~= 'SPRINT' then
+		if self.ultilitySlot:isCurrentSkillReady() then color = {1, 1, 1}
+		else color = {179/255, 56/255, 49/255}
+		end
+	else
+		if self.players[1].isGhostingLastFrame then color = {145/255, 219/255, 105/255}
+		else color = {1, 1, 1}
+		end
+	end
+	love.graphics.setColor(color)
 	love.graphics.print(ultility, 682, 475, 0, 1, 1, Fonts.playerManager_big:getWidth(ultility) - 58)
 end
 
