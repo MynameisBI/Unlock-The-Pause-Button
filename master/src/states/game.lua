@@ -100,17 +100,17 @@ function Game:draw()
         love.graphics.setColor(1, 1, 1)
         love.graphics.setFont(Fonts.infoScreen)
         love.graphics.print(
-            "PRESS ESCAPE TO RESUME",
+            "PRESS ESCAPE or P TO RESUME",
             sw / 2,
             330,
             0,
             1,
             1,
-            Fonts.infoScreen:getWidth("PRESS ESCAPE TO RESUME") / 2
+            Fonts.infoScreen:getWidth("PRESS ESCAPE or P TO RESUME") / 2
         )
         love.graphics.print(
             "PRESS R TO RESTART",
-            sw / 2,
+            sw / 2 + 0.5,
             360,
             0,
             1,
@@ -126,6 +126,11 @@ function Game:draw()
             1,
             Fonts.infoScreen:getWidth("PRESS M TO RETURN TO MENU") / 2
         )
+        
+        love.graphics.setFont(Fonts.menuFont_tiny)
+        love.graphics.print("TIP: YOU HAVEN'T UNLOCKED THE PAUSE BUTTON",
+                sw/2, 30, 0, 1, 1,
+                Fonts.menuFont_tiny:getWidth("TIP: YOU HAVEN'T UNLOCKED THE PAUSE BUTTON")/2)
     end
     
     self.suit:draw()

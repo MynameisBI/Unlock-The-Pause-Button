@@ -16,6 +16,7 @@ local descriptions = {
 	},
 	obstacle = {
 		['game speed'] = 'increase game speed',
+		['invert controls'] = 'invert movement controls',
 		cursor = 'random cursors appear on the screen',
 	}
 }

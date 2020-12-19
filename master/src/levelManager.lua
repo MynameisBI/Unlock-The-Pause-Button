@@ -10,11 +10,13 @@ function LevelManager:initialize()
 		cooldown = 0,
 		lifesteal = 2,
 		
-		pause = true,
+		pause = false,
 	}
 	
 	self.obstacles = {
-		['game speed'] = 0
+		['game speed'] = 0,
+		['invert controls'] = false,
+		ads = 0,
 	}
 end
 
@@ -61,6 +63,9 @@ function LevelManager:handleObstacle(obstacle)
 		
 	elseif obstacle == 'cursor' then
 		Gamestate.current().cursorManager:addCursor(3)
+		
+	elseif obstacle == 'invert controls' then
+		self.obstacles['invert controls'] = true
 		
 	end
 end

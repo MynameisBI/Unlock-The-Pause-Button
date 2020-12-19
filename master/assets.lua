@@ -30,6 +30,7 @@ Sprites = {
 		selected = lg.newImage('assets/obstacles/selected.png'),
 		
 		['game speed'] = lg.newImage('assets/obstacles/gameSpeed.png'),
+		['invert controls'] = lg.newImage('assets/obstacles/invertControls.png'),
 		cursor = lg.newImage('assets/obstacles/cursor.png'),
 	},
 	player = {

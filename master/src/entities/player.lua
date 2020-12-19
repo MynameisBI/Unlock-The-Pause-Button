@@ -97,6 +97,10 @@ function Player:move(vect)
     self.currentState = 'walk'
   end
   
+  if Gamestate.current().levelManager:getObstacle('invert controls') == true then
+    vect = vect:rotated(math.pi)
+  end
+  
   if not self.isDashing then
     if not self.isGhostingLastFrame then
       self:translate(vect)

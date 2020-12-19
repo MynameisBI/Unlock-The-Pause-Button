@@ -11,38 +11,39 @@ local upgrades = {
 }
 local obstacles = {
 	'game speed', 'cursor',
-	'invert controls', 'pedestrians'
+	'invert controls', 'ads'
 }
 
 function LevelUp:enter(gameState)
 	self.gameState = gameState
 	self.levelManager = gameState.levelManager
 	
-	local o1, o2, o3 = self:chooseUpgradeOptions()
-	self.upgradeGroup = OptionGroup(186, 50, 'upgrade', o1, o2, o3)
+	local u1, u2, u3 = self:chooseFromOptions(upgrades)
+	self.upgradeGroup = OptionGroup(186, 50, 'upgrade', u1, u2, u3)
 	
-	self.obstacleGroup = OptionGroup(186, 370, 'obstacle', 'game speed', 'cursor', 'not found')
+	local o1, o2, o3 = self:chooseFromOptions(obstacles)
+	self.obstacleGroup = OptionGroup(186, 370, 'obstacle', 'game speed', 'cursor', 'invert controls')
 	
 	self.confirmButton = ConfirmButton:new(screenWidth/2 - 60, screenHeight/2 - 35,
 			self.upgradeGroup, self.obstacleGroup)
 end
 
 
-function LevelUp:chooseUpgradeOptions()
-	local upgradeOptionIndexes = {}
+function LevelUp:chooseFromOptions(options)
+	local optionIndexes = {}
 	for i = 1, 3 do
 		local optionIndex
 		repeat
-			optionIndex = math.random(1, #upgrades)
+			optionIndex = math.random(1, #options)
 		until (
-			self:isValueInTable(optionIndex, upgradeOptionIndexes) == false and
-			self.levelManager:getStat(upgrades[optionIndex]) ~= true
+			self:isValueInTable(optionIndex, optionIndexes) == false and
+			self.levelManager:getStat(options[optionIndex]) ~= true
 		)
-		upgradeOptionIndexes[i] = optionIndex
+		optionIndexes[i] = optionIndex
 	end
 	
-	return upgrades[upgradeOptionIndexes[1]], upgrades[upgradeOptionIndexes[2]],
-			upgrades[upgradeOptionIndexes[3]]
+	return options[optionIndexes[1]], options[optionIndexes[2]],
+			options[optionIndexes[3]]
 end
 
 function LevelUp:chooseObstacleOptions()
