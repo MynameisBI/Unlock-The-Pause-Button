@@ -45,8 +45,11 @@ Sprites = {
 }
 
 Fonts = {
+	menuFont_tiny = lg.newFont('assets/fonts/04B_03B_.TTF', 16),
+	menuFont_verySmall = lg.newFont('assets/fonts/04B_03B_.TTF', 24),
 	menuFont_small = lg.newFont('assets/fonts/04B_03B_.TTF', 32),
 	menuFont_medium = lg.newFont('assets/fonts/04B_08__.TTF', 40),
+	menuFont_big = lg.newFont('assets/fonts/04B_08__.TTF', 48),
 	menuFont_veryBig = lg.newFont('assets/fonts/04B_08__.TTF', 56),
 	
 	playerManager_small = lg.newFont('assets/fonts/04B_08__.TTF', 16),

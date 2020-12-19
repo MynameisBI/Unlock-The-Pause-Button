@@ -20,6 +20,7 @@ Game = require "src.states.game"
 LevelUp = require "src.states.levelUp"
 Pause = require "src.states.pause"
 Menu = require "src.states.menu"
+End = require 'src.states.end'
 
 function love.load()
     math.randomseed(os.time())

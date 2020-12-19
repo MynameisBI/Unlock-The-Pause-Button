@@ -10,16 +10,16 @@ function Spawner:initialize(x, y, enemyType)
 	local enemyClass, interval, quantity
 	if enemyType == 'TouchAndExplode' then
 		enemyClass = TouchAndExplode
-		interval = 0.25
-		quantity = 5
+		interval = 0.2
+		quantity = 8
 	elseif enemyType == 'BulletBurster' then
 		enemyClass = BulletBurster
-		interval = 0.4
-		quantity = 3
+		interval = 0.28
+		quantity = 5
 	elseif enemyType == 'BigBoy' then
 		enemyClass = BigBoy
-		interval = 1
-		quantity = 2
+		interval = 0.5
+		quantity = 3
 	else
 	
 	end

@@ -13,6 +13,7 @@ function Game:enter()
   self.queuedState = nil
   
   self.bumpWorld = Bump.newWorld()
+  self.timer = Timer()
   
   self.playerManager = PlayerManager()
   self.levelManager = LevelManager()
@@ -33,6 +34,8 @@ function Game:enter()
 end
 
 function Game:update(dt)
+    self.timer:update(dt)
+    
     dt = dt * (1 + self.levelManager:getObstacle("game speed") / 5)
 
     self.playerManager:update(dt)

@@ -20,8 +20,7 @@ function Menu:update(dt)
 end
 
 function Menu:draw()
-	love.graphics.setColor(50/255, 51/255, 83/255)
-	love.graphics.rectangle('fill', 0, 0, sw, sh)
+	love.graphics.setBackgroundColor(50/255, 51/255, 83/255)
 	
 	self.suit:draw()
 	

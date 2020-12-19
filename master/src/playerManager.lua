@@ -129,7 +129,7 @@ function PlayerManager:update(dt)
 	
 	if self.players[1] ~= nil then
 		Gamestate.current().camera:lockPosition(self.players[1].x, self.players[1].y,
-				Camera.smooth.damped(2))
+				Camera.smooth.damped(1.57))
 	end
 end
 

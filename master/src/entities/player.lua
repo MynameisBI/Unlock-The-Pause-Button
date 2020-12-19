@@ -1,10 +1,11 @@
 local Entity = require 'src.entities.entity'
 local AfterImage = require 'src.decorations.afterImage'
+local PlayerRemains = require 'src.decorations.playerRemains'
 
 local Player = Class('Player', Entity)
 
 local screenWidth, screenHeight = love.graphics.getDimensions()
-local baseHealth = 100
+local baseHealth = 60
 
 function Player:initialize(x, y)
   Entity.initialize(self, x or screenWidth/2, y or screenHeight/2, 32, 38)
@@ -119,10 +120,28 @@ function Player:takeDamage(damage)
   if not self.isInvicible and not self.isDashing then
     self.health = self.health - damage
   
+    local playerManager = Gamestate.current().playerManager
     if self.health <= 0 then
-      print("I'm freaking dead")
+      self.health = 0
+      
+      if #playerManager.players >= 2 then
+        self:destroy()
+        for i = 1, 18 do
+          Gamestate.current():addEntity(PlayerRemains(self.x, self.y))
+        end
+        
+      else
+        self:destroy()
+        for i = 1, 18 do
+          Gamestate.current():addEntity(PlayerRemains(self.x, self.y))
+        end
+        
+        Gamestate.current().timer:after(2, function()
+          Gamestate.current():queueState(End)
+        end)
+        
+      end
     end
-    
   end
 end
 
@@ -135,7 +154,7 @@ end
 
 function Player:reCaculateStats()
   local levelManager = Gamestate.current().levelManager
-  local newMaxHealth = baseHealth + levelManager:getStat('health') * 30
+  local newMaxHealth = baseHealth + levelManager:getStat('health') * 20
   
   self.health = self.health + newMaxHealth - self.maxHealth
   self.maxHealth = newMaxHealth

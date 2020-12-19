@@ -15,14 +15,17 @@ function BulletBurster:initialize(x, y)
 	
 	self.shootTimer = self.timer:every(1.4 + math.random(30, 60) / 10, function()
 		local target = self:findTarget()
-		local vect = Vector(target.x - self.x, target.y - self.y)
-		local dist, dir = vect.length, vect.normalized
 		
-		if dist <= d_DistToTarget[1] then
-			for i = 1, 4 do
-				local angle = bulletSpread - bulletSpread / 3 * (i-1)
-				local bullet = BulletBursterBullet(self.x, self.y, dir:rotated(angle))
-				Gamestate.current():addEntity(bullet)
+		if target ~= nil then
+			local vect = Vector(target.x - self.x, target.y - self.y)
+			local dist, dir = vect.length, vect.normalized
+			
+			if dist <= d_DistToTarget[1] then
+				for i = 1, 4 do
+					local angle = bulletSpread - bulletSpread / 3 * (i-1)
+					local bullet = BulletBursterBullet(self.x, self.y, dir:rotated(angle))
+					Gamestate.current():addEntity(bullet)
+				end
 			end
 		end
 	end)
