@@ -30,10 +30,10 @@ function SeekerBullet:onCollision(other)
 	
   if other.tag == 'enemy' and other.isDead == false then
     other:takeDamage(
-        6 * (1 + levelManager:getStat('damage')/4)
+        6 * (1 + levelManager:getStat('damage')/3)
     )
 		Gamestate.current().playerManager:heal(
-        6 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+        6 * (1 + levelManager:getStat('damage')/3) * (levelManager:getStat('lifesteal')/10)
     )
 		self:destroy()
 		

@@ -19,10 +19,10 @@ function TheBlastBullet:onCollision(other)
   
   if other.tag == 'enemy' and other.isDead == false then
     other:takeDamage(
-        3 * (1 + Gamestate.current().levelManager:getStat('damage')/4)
+        3 * (1 + Gamestate.current().levelManager:getStat('damage')/3)
     )
     Gamestate.current().playerManager:heal(
-        3 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+        3 * (1 + levelManager:getStat('damage')/3) * (levelManager:getStat('lifesteal')/10)
     )
 		self:destroy()
     

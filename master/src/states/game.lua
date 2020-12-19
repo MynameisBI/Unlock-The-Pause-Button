@@ -4,6 +4,7 @@ local EnemyManager = require 'src.enemyManager'
 local LevelManager = require 'src.levelManager'
 local PlayerManager = require 'src.playerManager'
 local CursorManager = require 'src.cursorManager'
+local Background = require 'src.background'
 
 local Game = {}
 
@@ -33,6 +34,8 @@ function Game:enter()
   self.isInInfoScreen = false
     
     self.suit = Suit.new()
+    
+    self.background = Background(-sw, -sh, sw * 3, sh * 3)
 end
 
 function Game:update(dt)
@@ -70,9 +73,11 @@ function Game:draw()
     love.graphics.setBackgroundColor(69/255, 41/255, 63/255)
 
     self.camera:attach()
-
+    
     love.graphics.setColor(50/255, 51/255, 83/255)
     love.graphics.rectangle('fill', -sw - 30, -sh - 30, sw * 3 + 60, sh * 3 + 60)
+    
+    self.background:draw()
     
     for i, entity in ipairs(self.entities) do
         entity:draw()

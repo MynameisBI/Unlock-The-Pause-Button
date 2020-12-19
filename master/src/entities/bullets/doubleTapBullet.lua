@@ -19,10 +19,10 @@ function DoubleTapBullet:onCollision(other)
   
   if other.tag == 'enemy' and other.isDead == false then
     other:takeDamage(
-        5 * (1 + levelManager:getStat('damage')/4)
+        5 * (1 + levelManager:getStat('damage')/3)
     )
     Gamestate.current().playerManager:heal(
-        5 * (1 + levelManager:getStat('damage')/4) * (levelManager:getStat('lifesteal')/10)
+        5 * (1 + levelManager:getStat('damage')/3) * (levelManager:getStat('lifesteal')/10)
     )
 		self:destroy()
     

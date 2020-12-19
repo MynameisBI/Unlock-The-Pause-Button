@@ -62,7 +62,7 @@ Fonts = {
 	
 	infoScreen = lg.newFont('assets/fonts/04B_03B_.TTF', 24),
 	
-	enemyStatus = lg.newFont('assets/fonts/04B_03B_.TTF', 8),
+	enemyStatus = lg.newFont('assets/fonts/04B_03B_.TTF', 16),
 	
 	optionDescription = lg.newFont('assets/fonts/04B_08__.TTF', 16)
 }
