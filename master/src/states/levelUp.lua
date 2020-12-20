@@ -24,7 +24,7 @@ function LevelUp:enter(gameState)
 	local o1, o2, o3 = self:chooseFromOptions(obstacles)
 	self.obstacleGroup = OptionGroup(186, 370, 'obstacle', o1, o2, o3)
 	
-	self.confirmButton = ConfirmButton:new(screenWidth/2 - 60, screenHeight/2 - 35,
+	self.confirmButton = ConfirmButton:new(screenWidth/2 - 100, screenHeight/2 - 35,
 			self.upgradeGroup, self.obstacleGroup)
 end
 
