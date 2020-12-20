@@ -4,6 +4,7 @@ local BigBoyBullet = Class('BigBoyBullet', Entity)
 
 function BigBoyBullet:initialize(x, y, dir)
 	Entity.initialize(self, x, y, 14, 22)
+	self.tag = 'enemy bullet'
 	
 	self.dir = dir
 	self.speed = 300

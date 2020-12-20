@@ -5,7 +5,7 @@ local Enemy = require 'src.entities.enemies.enemy'
 local BulletBurster = Class('BulletBurster', Enemy)
 
 local d_DistToTarget = {
-	460, 300, 90
+	460, 180, 90
 }
 local maxSpreadAngle2 = -math.pi/18
 local bulletSpread = math.pi/6
@@ -13,7 +13,7 @@ local bulletSpread = math.pi/6
 function BulletBurster:initialize(x, y)
 	Enemy.initialize(self, x, y, 20, 20, 3.2, 80, math.pi/4)
 	
-	self.shootTimer = self.timer:every(1.4 + math.random(30, 60) / 10, function()
+	self.shootTimer = self.timer:every(1.1 + math.random(30, 60) / 10, function()
 		local target = self:findTarget()
 		
 		if target ~= nil then

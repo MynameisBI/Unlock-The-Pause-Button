@@ -5,6 +5,7 @@ local LevelManager = require 'src.levelManager'
 local PlayerManager = require 'src.playerManager'
 local CursorManager = require 'src.cursorManager'
 local Background = require 'src.background'
+local AdManager = require 'src.adManager'
 
 local Game = {}
 
@@ -36,6 +37,8 @@ function Game:enter()
     self.suit = Suit.new()
     
     self.background = Background(-sw, -sh, sw * 3, sh * 3)
+    
+    self.adManager = AdManager()
 end
 
 function Game:update(dt)
@@ -43,11 +46,12 @@ function Game:update(dt)
     
     dt = dt * (1 + self.levelManager:getObstacle("game speed") / 5)
 
+    self.adManager:update(dt)
     self.playerManager:update(dt)
     self.enemyManager:update(dt)
     self.cursorManager:update(dt)
-
-    for i, entity in ipairs(self.entities) do
+    
+    for _, entity in ipairs(self.entities) do
         if entity.isDestroyed then
             self:removeEntity(entity)
         else
@@ -79,20 +83,30 @@ function Game:draw()
     
     self.background:draw()
     
-    for i, entity in ipairs(self.entities) do
-        entity:draw()
+    local players = {}
+    for _, entity in ipairs(self.entities) do
+        if entity.tag == 'player' then
+            table.insert(players, entity)
+        else
+            entity:draw()
+        end
     end
-
+    for _, player in ipairs(players) do
+        player:draw()
+    end
+    
     for i, entity in ipairs(self.entities) do
         entity:guiDraw()
     end
 
     self.camera:detach()
-
-    self.cursorManager:draw()
-
+    
     self.playerManager:draw()
 
+    self.adManager:draw()
+    
+    self.cursorManager:draw()
+    
     if self.isInInfoScreen then
         love.graphics.setColor(0, 0, 0, 0.4)
         love.graphics.rectangle("fill", 0, 0, sw, sh)

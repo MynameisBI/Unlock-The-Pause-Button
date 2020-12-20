@@ -63,7 +63,7 @@ function PlayerManager:initialize()
 	)
 	
 	self.ultilitySlot = SkillSlot(
-			Skill(2.2, function(skill, x, y, mx, my, dir, player) -- Dash
+			Skill(2.5, function(skill, x, y, mx, my, dir, player) -- Dash
 				if player.isGhostingLastFrame then
 					return
 				end
@@ -71,22 +71,22 @@ function PlayerManager:initialize()
 				player:dash(dir)
 			end),
 			
-			Skill(5, function(skill, x, y, mx, my, dir, player) -- Stun
+			Skill(4.84, function(skill, x, y, mx, my, dir, player) -- Stun
 				if player.isGhostingLastFrame then
 					return
 				end
 				
 				for _, entity in ipairs(Gamestate.current().entities) do
-					if entity.tag == 'enemy' then
+					if entity.tag == 'enemy' and entity.isDead == false then
 						local dist = Vector(entity.x - x, entity.y - y).length
-						if dist <= 260 then
+						if dist <= 350 then
 							entity:setStun()
 						end
 					end
 				end
 			end),
 			
-			Skill(2.6, function(skill, x, y, mx, my, dir, player) -- Reflex
+			Skill(3.76, function(skill, x, y, mx, my, dir, player) -- Reflect
 				if player.isGhostingLastFrame then
 					return
 				end
@@ -94,7 +94,7 @@ function PlayerManager:initialize()
 				for _, entity in ipairs(Gamestate.current().entities) do
 					if entity.tag == 'enemy bullet' then
 						local dist = Vector(entity.x - x, entity.y - y).length
-						if dist <= 180 then
+						if dist <= 500 then
 							entity:destroy()
 						end
 					end

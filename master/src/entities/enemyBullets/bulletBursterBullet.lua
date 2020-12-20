@@ -4,6 +4,7 @@ local BulletBursterBullet = Class('BulletBursterBullet', Entity)
 
 function BulletBursterBullet:initialize(x, y, dir)
 	Entity.initialize(self, x, y, 14, 14)
+	self.tag = 'enemy bullet'
 	
 	self.dir = dir
 	self.speed = 470

@@ -47,6 +47,15 @@ Sprites = {
 			idle = lg.newImage('assets/player/topHat_idle.png'),
 			walk = lg.newImage('assets/player/topHat_walk.png'),
 		}
+	},
+	ads = {
+		lg.newImage('assets/ads/beingPoorSuck.png'),
+		lg.newImage('assets/ads/doctorsHateHim.png'),
+		lg.newImage('assets/ads/freeMoney.png'),
+		
+		close_normal = lg.newImage('assets/ads/close_normal.png'),
+		close_hovered = lg.newImage('assets/ads/close_hovered.png'),
+		close_active = lg.newImage('assets/ads/close_active.png'),
 	}
 }
 

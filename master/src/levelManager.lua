@@ -67,6 +67,10 @@ function LevelManager:handleObstacle(obstacle)
 	elseif obstacle == 'invert controls' then
 		self.obstacles['invert controls'] = true
 		
+	elseif obstacle == 'ads' then
+		self.obstacles.ads = self.obstacles.ads + 1
+		Gamestate.current().adManager.secondsToSpawnAd = 2.5
+		
 	end
 end
 
