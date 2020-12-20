@@ -18,6 +18,7 @@ local descriptions = {
 		['game speed'] = 'increase game speed',
 		['invert controls'] = 'invert movement controls',
 		cursor = 'random cursors appear on the screen',
+		ads = 'sometimes random ads will pop up'
 	}
 }
 
