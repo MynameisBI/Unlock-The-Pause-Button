@@ -65,7 +65,7 @@ function LevelManager:handleObstacle(obstacle)
 		Gamestate.current().cursorManager:addCursor(3)
 		
 	elseif obstacle == 'invert controls' then
-		self.obstacles['invert controls'] = true
+		self.obstacles['invert controls'] = not self.obstacles['invert controls']
 		
 	elseif obstacle == 'ads' then
 		self.obstacles.ads = self.obstacles.ads + 1
